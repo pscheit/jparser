@@ -9,3 +9,14 @@ It compiles two library files into httpdocs/jparser-libs and tarballs the distru
 
 For more informaton please visit http://web.2point1.com
 
+
+installation
+---------------------
+
+* [install composer](http://getcomposer.org)
+* `composer init` to create a composer.json for your project
+
+require jparser as a dependency for your project:
+```
+composer require "timwhitlock/jparser dev-master"
+```
