@@ -1,0 +1,10 @@
+#!/usr/bin/php
+<?php
+/**
+ * Test script. Does pretty much nothing
+ */
+require dirname($argv[0]).'/../plugcli.php';
+echo "
+Hello ",trim(`whoami`),"!
+Bye.
+";

@@ -1,0 +1,567 @@
+# Full JavaScript (ECMA 262, Edition 3) Grammar
+#
+
+# 14 .
+# Program
+# -------
+<J_PROGRAM> 
+	: <J_ELEMENTS>
+	;
+
+<J_ELEMENTS> 
+	: <J_ELEMENT>
+	| <J_ELEMENTS> <J_ELEMENT> 
+	;
+
+<J_ELEMENT> 
+	: <J_STATEMENT> 
+	| <J_FUNC_DECL>
+	;
+
+
+
+# 13. 
+# Function definitions
+# --------------------
+<J_FUNC_DECL> 
+	: J_FUNCTION J_IDENTIFIER "(" <J_PARAM_LIST> ")" "{" <J_FUNC_BODY> "}"
+	| J_FUNCTION J_IDENTIFIER "(" ")" "{" <J_FUNC_BODY> "}"
+	;
+
+<J_FUNC_EXPR> 
+	: J_FUNCTION J_IDENTIFIER "(" <J_PARAM_LIST> ")" "{" <J_FUNC_BODY> "}"
+	| J_FUNCTION J_IDENTIFIER "(" ")" "{" <J_FUNC_BODY> "}"
+	| J_FUNCTION "(" <J_PARAM_LIST> ")" "{" <J_FUNC_BODY> "}"
+	| J_FUNCTION "(" ")" "{" <J_FUNC_BODY> "}"
+	;
+
+<J_PARAM_LIST> 
+	: J_IDENTIFIER
+	| <J_PARAM_LIST> "," J_IDENTIFIER
+	;
+
+<J_FUNC_BODY>
+	: <J_ELEMENTS>
+		   
+
+# 12 - Statements
+# ---------------		   
+# 12.1
+<J_STATEMENT> 
+	: <J_BLOCK>
+	| <J_VAR_STATEMENT> 
+	| <J_EMPTY_STATEMENT>
+	| <J_EXPR_STATEMENT> 
+	| <J_IF_STATEMENT>  
+	| <J_ITER_STATEMENT>
+	| <J_CONT_STATEMENT>
+	| <J_BREAK_STATEMENT> 
+	| <J_RETURN_STATEMENT> 
+	| <J_WITH_STATEMENT>
+	| <J_LABELLED_STATEMENT> 
+	| <J_SWITCH_STATEMENT>
+	| <J_THROW_STATEMENT> 
+	| <J_TRY_STATEMENT>
+	;
+
+
+<J_BLOCK> 
+	: "{" "}" 
+	| "{" <J_STATEMENT_LIST> "}"
+	;
+
+<J_STATEMENT_LIST> 
+	: <J_STATEMENT>
+	| <J_STATEMENT_LIST> <J_STATEMENT>
+	;
+
+
+# 12.2 - Variable Statement
+<J_VAR_STATEMENT> 
+	: J_VAR <J_VAR_DECL_LIST> ";"
+	;
+	                    
+<J_VAR_DECL_LIST> 
+	: <J_VAR_DECL>
+	| <J_VAR_DECL_LIST> "," <J_VAR_DECL>
+	;
+
+<J_VAR_DECL_LIST_NO_IN> 
+	: <J_VAR_DECL_NO_IN>
+	| <J_VAR_DECL_LIST_NO_IN> "," <J_VAR_DECL_NO_IN>
+	;
+
+<J_VAR_DECL> 
+	: J_IDENTIFIER
+	| J_IDENTIFIER <J_INITIALIZER>
+	;
+
+<J_VAR_DECL_NO_IN> 
+	: J_IDENTIFIER
+	| J_IDENTIFIER <J_INITIALIZER_NO_IN>
+	;
+
+<J_INITIALIZER> 
+	: "=" <J_ASSIGN_EXPR>
+	;
+
+<J_INITIALIZER_NO_IN>
+	: "=" <J_ASSIGN_EXPR_NO_IN>
+	;
+			  
+
+# 12.3 - Empty Statement
+<J_EMPTY_STATEMENT> 
+	: ";"
+	;
+
+
+# 12.4 - Expression Statement
+# - Cannot start with "{" or J_FUNCTION
+# - Special Rule Processing, see Grammar::exclude_terminal
+<J_EXPR_STATEMENT> 
+	: <J_EXPR> ";" 
+	;
+
+
+# 12.5 - The J_IF Statement
+# - Conflicts here on J_ELSE symbol but seems to work with a default shift
+<J_IF_STATEMENT> 
+	: J_IF "(" <J_EXPR> ")" <J_STATEMENT> J_ELSE <J_STATEMENT>
+	| J_IF "(" <J_EXPR> ")" <J_STATEMENT>
+	;
+
+# 12.6 - Iterations Statements
+<J_ITER_STATEMENT>
+	: J_DO <J_STATEMENT> J_WHILE "(" <J_EXPR> ")" ";"
+	| J_WHILE "(" <J_EXPR> ")" <J_STATEMENT>
+	| J_FOR "(" ";" ";" ")" <J_STATEMENT>
+	| J_FOR "(" <J_EXPR_NO_IN> ";" ";" ")" <J_STATEMENT>
+	| J_FOR "(" <J_EXPR_NO_IN> ";" <J_EXPR> ";" ")" <J_STATEMENT>
+	| J_FOR "(" <J_EXPR_NO_IN> ";" <J_EXPR> ";" <J_EXPR> ")" <J_STATEMENT>
+	| J_FOR "(" <J_EXPR_NO_IN> ";" ";" <J_EXPR> ")" <J_STATEMENT>
+	| J_FOR "(" ";" <J_EXPR> ";" ")" <J_STATEMENT>
+	| J_FOR "(" ";" <J_EXPR> ";" <J_EXPR> ")" <J_STATEMENT>
+	| J_FOR "(" ";" ";" <J_EXPR> ")" <J_STATEMENT>
+	| J_FOR "(" J_VAR <J_VAR_DECL_LIST_NO_IN> ";" ";" ")" <J_STATEMENT>
+	| J_FOR "(" J_VAR <J_VAR_DECL_LIST_NO_IN> ";" <J_EXPR> ";" ")" <J_STATEMENT>
+	| J_FOR "(" J_VAR <J_VAR_DECL_LIST_NO_IN> ";" ";" <J_EXPR> ")" <J_STATEMENT>
+	| J_FOR "(" J_VAR <J_VAR_DECL_LIST_NO_IN> ";" <J_EXPR> ";" <J_EXPR> ")" <J_STATEMENT>
+	| J_FOR "(" <J_LHS_EXPR> J_IN <J_EXPR> ")" <J_STATEMENT>
+	| J_FOR "(" J_VAR <J_VAR_DECL_NO_IN> J_IN <J_EXPR> ")" <J_STATEMENT>
+	;
+
+# 12.7 - Continue Statement 
+# ( No line terminator after J_CONTINUE )
+<J_CONT_STATEMENT> 
+	: J_CONTINUE ";"
+	| J_CONTINUE J_IDENTIFIER ";"
+	;
+
+# 12.8 - Break Statement
+# ( No line terminator after J_BREAK )
+<J_BREAK_STATEMENT> 
+	: J_BREAK ";"
+	| J_BREAK J_IDENTIFIER ";"
+	;
+
+# 12.9 - Return Statement
+# ( No line terminator after J_RETURN )
+<J_RETURN_STATEMENT> 
+	: J_RETURN ";"
+	| J_RETURN <J_EXPR> ";"
+	;
+
+# 12.10 - With Statement
+<J_WITH_STATEMENT> 
+	: J_WITH "(" <J_EXPR> ")" <J_STATEMENT>
+	;
+
+# 12.11 - Switch Statement
+<J_SWITCH_STATEMENT> 
+	: J_SWITCH "(" <J_EXPR> ")" <J_CASE_BLOCK>
+	;
+
+<J_CASE_BLOCK> 
+	: "{" "}"
+	| "{" <J_CASE_CLAUSES> "}"
+	| "{" <J_CASE_DEFAULT> "}"
+	| "{" <J_CASE_DEFAULT> <J_CASE_CLAUSES> "}"
+	| "{" <J_CASE_CLAUSES> <J_CASE_DEFAULT> "}"
+	| "{" <J_CASE_CLAUSES> <J_CASE_DEFAULT> <J_CASE_CLAUSES> "}"
+	;
+	
+<J_CASE_CLAUSES> 
+	: <J_CASE_CLAUSE>
+	| <J_CASE_CLAUSES> <J_CASE_CLAUSE>
+	;
+
+<J_CASE_CLAUSE> 
+	: J_CASE <J_EXPR> ":"
+	| J_CASE <J_EXPR> ":" <J_STATEMENT_LIST>
+	;
+
+<J_CASE_DEFAULT> 
+	: J_DEFAULT ":"
+	| J_DEFAULT ":" <J_STATEMENT_LIST>
+	;
+
+
+# 12.12 - Labelled Statements
+<J_LABELLED_STATEMENT> 
+	: J_IDENTIFIER ":" <J_STATEMENT>
+	;
+
+# 12.13 - The "throw" Statement
+# ( No line terminator after J_THROW )
+<J_THROW_STATEMENT> 
+	: J_THROW <J_EXPR> ";"
+	;
+
+# 12.14 - The "try" Statement
+<J_TRY_STATEMENT> 
+	: J_TRY <J_BLOCK> <J_CATCH_CLAUSE>
+	| J_TRY <J_BLOCK> <J_FINALLY_CLAUSE>
+	| J_TRY <J_BLOCK> <J_CATCH_CLAUSE> <J_FINALLY_CLAUSE>
+	;
+
+<J_CATCH_CLAUSE> 
+	: J_CATCH "(" J_IDENTIFIER ")" <J_BLOCK>
+	;
+
+<J_FINALLY_CLAUSE> 
+	: J_FINALLY <J_BLOCK>
+	;
+
+
+
+
+
+# 11 - Expressions
+# ----------------
+# 11.1 
+<J_PRIMARY_EXPR> 
+	: J_THIS
+	| J_IDENTIFIER
+	| J_STRING_LITERAL
+	| J_NUMERIC_LITERAL
+	| J_TRUE
+	| J_FALSE
+	| J_NULL
+	| J_REGEX
+	| <J_ARRAY_LITERAL>
+	| <J_OBJECT_LITERAL>
+	| "(" <J_EXPR> ")"
+	;
+				   
+
+# 11.1.4
+# ( As per the spec, but extra commas are odd, as it is in the elision rule too )
+<J_ARRAY_LITERAL> 
+	: "[" "]" 
+	| "[" <J_ELISION> "]" 
+	| "[" <J_ELEMENT_LIST> "]" 
+	| "[" <J_ELEMENT_LIST> "," "]"
+	| "[" <J_ELEMENT_LIST> "," <J_ELISION> "]"
+	;
+
+<J_ELEMENT_LIST> 
+	: <J_ASSIGN_EXPR>
+	| <J_ELISION> <J_ASSIGN_EXPR>
+	| <J_ELEMENT_LIST> "," <J_ASSIGN_EXPR>
+	| <J_ELEMENT_LIST> "," <J_ELISION> <J_ASSIGN_EXPR>
+	;
+	
+# Elision is permitted empty elements, e.g. ",,,"
+<J_ELISION> 
+	: ","
+	| <J_ELISION> ","
+	;
+						 
+# 11.1.5
+<J_OBJECT_LITERAL> 
+	: "{" "}"
+	| "{" <J_PROP_LIST> "}"
+	;
+
+<J_PROP_LIST> 
+	: <J_PROP_NAME> ":" <J_ASSIGN_EXPR>
+	| <J_PROP_LIST> "," <J_PROP_NAME> ":" <J_ASSIGN_EXPR>
+	;
+						 
+<J_PROP_NAME> 
+	: J_IDENTIFIER
+	| J_STRING_LITERAL 
+	| J_NUMERIC_LITERAL
+	;
+
+
+# 11.2 - Left Hand Side Expressions
+<J_MEMBER_EXPR> 
+	: <J_PRIMARY_EXPR>
+	| <J_FUNC_EXPR>
+	| <J_MEMBER_EXPR> "[" <J_EXPR> "]"
+	| <J_MEMBER_EXPR> "." J_IDENTIFIER 
+	| J_NEW <J_MEMBER_EXPR> <J_ARGS>
+	;
+				
+<J_NEW_EXPR> 
+	: <J_MEMBER_EXPR>
+	| J_NEW <J_NEW_EXPR>
+	;
+
+<J_CALL_EXPR> 
+	: <J_MEMBER_EXPR> <J_ARGS>
+	| <J_CALL_EXPR> <J_ARGS>
+	| <J_CALL_EXPR> "[" <J_EXPR> "]"
+	| <J_CALL_EXPR> "." J_IDENTIFIER
+	;
+	
+<J_ARGS> 
+	: "(" ")"
+	| "(" <J_ARG_LIST> ")"
+	;
+		   
+<J_ARG_LIST>
+	: <J_ASSIGN_EXPR>
+	| <J_ARG_LIST> "," <J_ASSIGN_EXPR> 
+	;
+			   
+<J_LHS_EXPR> 
+	: <J_NEW_EXPR>
+	| <J_CALL_EXPR>
+	;
+
+# 11.3 - Postfix Expressions
+# (No line terminator before operators)
+<J_POSTFIX_EXPR> 
+	: <J_LHS_EXPR> 
+	| <J_LHS_EXPR> "++"
+	| <J_LHS_EXPR> "--"
+	;
+
+# 11.4 - Unary Operators
+<J_UNARY_EXPR> 
+	: <J_POSTFIX_EXPR>
+	| J_DELETE <J_UNARY_EXPR>
+	| J_VOID <J_UNARY_EXPR>
+	| J_TYPEOF <J_UNARY_EXPR>
+	| "++" <J_UNARY_EXPR>
+	| "--" <J_UNARY_EXPR>
+	| "+" <J_UNARY_EXPR>
+	| "-" <J_UNARY_EXPR> 
+	| "~" <J_UNARY_EXPR>
+	| "!" <J_UNARY_EXPR>
+	;
+
+# 11.5 - Multiplicative Operators
+<J_MULT_EXPR> 
+	: <J_UNARY_EXPR>
+	| <J_MULT_EXPR> "*" <J_UNARY_EXPR>
+	| <J_MULT_EXPR> "/" <J_UNARY_EXPR>
+	| <J_MULT_EXPR> "%" <J_UNARY_EXPR>
+	;
+ 
+# 11.6 - Additive Operators
+<J_ADD_EXPR> 
+	: <J_MULT_EXPR>
+	| <J_ADD_EXPR> "+" <J_MULT_EXPR>
+	| <J_ADD_EXPR> "-" <J_MULT_EXPR>
+	;
+
+# 11.7 - Bitwise Shift Operators
+<J_SHIFT_EXPR> 
+	: <J_ADD_EXPR> 
+	| <J_SHIFT_EXPR> "<<" <J_ADD_EXPR>
+	| <J_SHIFT_EXPR> ">>" <J_ADD_EXPR>
+	| <J_SHIFT_EXPR> ">>>" <J_ADD_EXPR>
+	;
+
+# 11.8 - Relational Operators
+<J_REL_EXPR> 
+	: <J_SHIFT_EXPR>
+	| <J_REL_EXPR> "<" <J_SHIFT_EXPR>
+	| <J_REL_EXPR> ">" <J_SHIFT_EXPR>
+	| <J_REL_EXPR> "<=" <J_SHIFT_EXPR>
+	| <J_REL_EXPR> ">=" <J_SHIFT_EXPR>
+	| <J_REL_EXPR> J_INSTANCEOF <J_SHIFT_EXPR>
+	| <J_REL_EXPR> J_IN <J_SHIFT_EXPR>
+	;
+
+# NOTE -
+# The "NoIn" variants are needed to to avoid confusing the J_IN operator in a relational expression with the J_IN operator in a for statement 
+<J_REL_EXPR_NO_IN> 
+	: <J_SHIFT_EXPR>
+	| <J_REL_EXPR_NO_IN> "<" <J_SHIFT_EXPR>
+	| <J_REL_EXPR_NO_IN> ">" <J_SHIFT_EXPR> 
+	| <J_REL_EXPR_NO_IN> "<=" <J_SHIFT_EXPR>
+	| <J_REL_EXPR_NO_IN> ">=" <J_SHIFT_EXPR>
+	| <J_REL_EXPR_NO_IN> J_INSTANCEOF <J_SHIFT_EXPR>
+	;
+
+# 11.9 - Equality Operators
+<J_EQ_EXPR> 
+	: <J_REL_EXPR>
+	| <J_EQ_EXPR> "==" <J_REL_EXPR>
+	| <J_EQ_EXPR> "!=" <J_REL_EXPR>
+	| <J_EQ_EXPR> "===" <J_REL_EXPR>
+	| <J_EQ_EXPR> "!==" <J_REL_EXPR>
+	;
+
+<J_EQ_EXPR_NO_IN> 
+	: <J_REL_EXPR_NO_IN>
+	| <J_EQ_EXPR_NO_IN> "==" <J_REL_EXPR_NO_IN>
+	| <J_EQ_EXPR_NO_IN> "!=" <J_REL_EXPR_NO_IN>
+	| <J_EQ_EXPR_NO_IN> "===" <J_REL_EXPR_NO_IN> 
+	| <J_EQ_EXPR_NO_IN> "!==" <J_REL_EXPR_NO_IN>
+	;
+
+# 11.10 - Binary Bitwise Operations			  
+<J_BIT_AND_EXPR> 
+	: <J_EQ_EXPR> 
+	| <J_BIT_AND_EXPR> "&" <J_EQ_EXPR>
+	;
+			  
+<J_BIT_AND_EXPR_NO_IN> 
+	: <J_EQ_EXPR_NO_IN>
+	| <J_BIT_AND_EXPR_NO_IN> "&" <J_EQ_EXPR_NO_IN>
+	;
+
+<J_BIT_XOR_EXPR> 
+	: <J_BIT_AND_EXPR>
+	| <J_BIT_XOR_EXPR> "^" <J_BIT_AND_EXPR>
+	;
+	
+<J_BIT_XOR_EXPR_NO_IN> 
+	: <J_BIT_AND_EXPR_NO_IN>
+	| <J_BIT_XOR_EXPR_NO_IN> "^" <J_BIT_AND_EXPR_NO_IN>
+	;
+			  
+<J_BIT_OR_EXPR> 
+	: <J_BIT_XOR_EXPR>
+	| <J_BIT_OR_EXPR> "|" <J_BIT_XOR_EXPR>
+	;
+			  
+<J_BIT_OR_EXPR_NO_IN> 
+	: <J_BIT_XOR_EXPR_NO_IN>
+	| <J_BIT_OR_EXPR_NO_IN> "|" <J_BIT_XOR_EXPR_NO_IN>
+	;
+			  
+# 11.11 - Binary Logical Operators
+<J_LOG_AND_EXPR> 
+	: <J_BIT_OR_EXPR>
+	| <J_LOG_AND_EXPR> "&&" <J_BIT_OR_EXPR>
+	;
+
+<J_LOG_AND_EXPR_NO_IN> 
+	: <J_BIT_OR_EXPR_NO_IN>
+	| <J_LOG_AND_EXPR_NO_IN> "&&" <J_BIT_OR_EXPR_NO_IN>
+	;
+
+<J_LOG_OR_EXPR> 
+	: <J_LOG_AND_EXPR>
+	| <J_LOG_OR_EXPR> "||" <J_LOG_AND_EXPR>
+	;
+
+<J_LOG_OR_EXPR_NO_IN> 
+	: <J_LOG_AND_EXPR_NO_IN>
+	| <J_LOG_OR_EXPR_NO_IN> "||" <J_LOG_AND_EXPR_NO_IN>
+	;
+				   
+# 11.12 - Conditional Operator ( ? : )
+<J_COND_EXPR> 
+	: <J_LOG_OR_EXPR>
+	| <J_LOG_OR_EXPR> "?" <J_ASSIGN_EXPR> ":" <J_ASSIGN_EXPR>
+	;
+				
+<J_COND_EXPR_NO_IN> 
+	: <J_LOG_OR_EXPR_NO_IN>
+	| <J_LOG_OR_EXPR_NO_IN> "?" <J_ASSIGN_EXPR_NO_IN> ":" <J_ASSIGN_EXPR_NO_IN>
+	;
+				
+
+# 11.13 - Assignment Operators
+<J_ASSIGN_EXPR> 
+	: <J_COND_EXPR>
+	| <J_LHS_EXPR> <J_ASSIGN_OP> <J_ASSIGN_EXPR>
+	;
+
+<J_ASSIGN_EXPR_NO_IN> 
+	: <J_COND_EXPR_NO_IN>
+	| <J_LHS_EXPR> <J_ASSIGN_OP> <J_ASSIGN_EXPR_NO_IN>
+	;
+
+<J_ASSIGN_OP> 
+	: "=" 
+	| "*=" 
+	| "/=" 
+	| "%=" 
+	| "+=" 
+	| "-=" 
+	| "<<=" 
+	| ">>=" 
+	| ">>>="
+	| "&=" 
+	| "^=" 
+	| "|="
+	;
+
+# 11.14 - Comma Operator
+<J_EXPR> 
+	: <J_ASSIGN_EXPR>
+	| <J_EXPR> "," <J_ASSIGN_EXPR>
+	;
+
+<J_EXPR_NO_IN> 
+	: <J_ASSIGN_EXPR_NO_IN>
+	| <J_EXPR_NO_IN> "," <J_ASSIGN_EXPR_NO_IN>
+	;
+
+	
+# Extra symbols not in any grammar rules but required by the tokenzer
+# 
+<J_IGNORE> 
+	: J_COMMENT
+	| J_WHITESPACE
+	| J_LINE_TERMINATOR
+	;
+	
+# Extra symbols that are reserved in ECMA 262 Edition 3
+# 
+<J_RESERVED>
+	: J_ABSTRACT  
+	| J_ENUM  
+	| J_INT  
+	| J_SHORT
+	| J_BOOLEAN  
+	| J_EXPORT  
+	| J_INTERFACE  
+	| J_STATIC
+	| J_BYTE  
+	| J_EXTENDS  
+	| J_LONG  
+	| J_SUPER
+	| J_CHAR
+	| J_FINAL
+	| J_NATIVE
+	| J_SYNCHRONIZED
+	| J_CLASS  
+	| J_FLOAT  
+	| J_PACKAGE  
+	| J_THROWS
+	| J_CONST  
+	| J_GOTO  
+	| J_PRIVATE  
+	| J_TRANSIENT
+	| J_DEBUGGER  
+	| J_IMPLEMENTS  
+	| J_PROTECTED  
+	| J_VOLATILE
+	| J_DOUBLE  
+	| J_IMPORT  
+	| J_PUBLIC
+	;
+		
+	
+
+

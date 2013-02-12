@@ -1,0 +1,16 @@
+#!/usr/bin/php
+<?php
+/**
+ * Version test script
+ * @param string version
+ */
+
+echo "PHP ", PHP_VERSION," >= ",$argv[1]," ? ";
+
+if( version_compare( PHP_VERSION, $argv[1], '>=') ){
+    echo "- yes\n";
+    exit(0);
+}
+
+echo "- no\n";
+exit(1);

@@ -1,0 +1,30 @@
+<BNF_RULES> 
+	: <BNF_RULE> <BNF_RULES> 
+	| <BNF_RULE> 
+	| <BNF_EMPTY_RULE> <BNF_RULES> 
+	| <BNF_EMPTY_RULE>
+	;
+
+<BNF_RULE>
+	: "<" <BNF_TEXT> ">" ":" <BNF_EXPRESSION> BNF_RULE_END
+	;
+
+<BNF_EMPTY_RULE>
+	: BNF_RULE_END
+	;
+
+<BNF_EXPRESSION>
+	: <BNF_LIST> "|" <BNF_EXPRESSION>
+	| <BNF_LIST>
+	;
+
+<BNF_LIST>
+	: <BNF_TERM> <BNF_LIST> 
+    | <BNF_TERM>
+    ;
+
+<BNF_TERM> 
+	: BNF_TEXT
+    | BNF_LITERAL 
+    | "<" BNF_TEXT ">"
+    ;

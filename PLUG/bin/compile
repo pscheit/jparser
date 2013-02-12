@@ -1,0 +1,281 @@
+#!/usr/bin/php -d memory_limit=200M
+<?php
+/**
+ * Compile source code to deployment directory for a given configuration
+ * @usage <code>PLUG/bin/compile "test/files" -rwnt </code>
+ * @package bin
+ */
+require dirname($argv[0]).'/../plugcli.php';
+
+
+/**
+ * Help/Usage printing function, called whenever bad args specified
+ */
+function exit_with_help( $e ){ ?>
+Usage: compile <path> [options]
+ <path>                           Path must be first argument and must be either absolute of relative to virtual root
+ -a, --standalone                 Compile in all inclusion directives, overrides --include
+ -b, --bytecode                   Compile source to bytecode, requires bcompiler extension [EXPERIMENTAL]
+ -c, --comments                   Keep comments in compiled source
+ -h, --help                       Show this help
+ -l, --literals                   Replace config constants with literal values, use with care!
+ -L, --allliterals                Replace all constants with literal values, use with even more care!
+ -n, --clean                      Empty out any currently deployed files 
+ -t, --keeptags                   Keep redundant php tags like "<?='?'?>><<?='?'?>php"
+ -q, --quiet                      Suppress verbose output
+ -r, --recursive                  Recurse into directories when collecting files for deployment 
+ -w, --whitespace                 Keep whitespace in compiled source
+     --conf=<conf>                Name of config directory, defaults to dev config 'conf'
+     --include=<x>,<y>,..         Inclusion directives that will be compiled in, defaults to none
+     --include-ignore=<x>,..      Inclusion directives that will be ignored completely
+     --include-path=<path>        Include paths to use when linking libraries, e.g. "plug/inc"
+     --match=<pattern>            PCRE to match when collecting files, defaults to /\.[a-z]{2,4}$/
+     --ignore=<pattern>           PCRE to ignore when collecting files for deployment, defaults to /^(\.|__|CVS)/
+<?php
+	exit($e);
+}
+
+
+/**
+ * Verbose function
+ */
+function prnt( $text ){
+	static $quiet;
+	if( ! isset($quiet) ){
+		$quiet = PLUGCli::arg('q') || PLUGCli::arg('quiet');
+	} 
+	if( ! $quiet ){
+		$args = func_get_args();
+		call_user_func_array( 'printf', $args );
+		echo "\n";
+	}
+}
+
+
+
+// print usage / help text for -h, or --help
+if( PLUGCli::arg('h') || PLUGCli::arg('help') ){
+	exit_with_help( 0 );
+}
+
+// grab target files for deployment
+// path assumed LAST argument that is not a flag
+foreach( $argv as $i => $arg ){
+	// allow empty string
+	if( $arg === '' ){
+		$path = $arg;
+	}
+	else if( $i && $arg{0} !== '-' ){
+		$path = $arg;
+    }
+}
+if( ! isset($path) ){
+        PLUGCli::stderr("Path expected in arguments \n");
+        exit_with_help( -1 );
+}
+if( $path === '' ){
+	$path = PLUG_VIRTUAL_DIR;
+}
+else if( $path{0} !== '/' ){
+	$path = PLUG_VIRTUAL_DIR .'/'. $path;
+}
+if( is_dir($path) ){
+	$r = PLUGCli::arg('r') || PLUGCli::arg('recursive');
+	$match = PLUGCli::arg( 'match', '/\.[a-z]{2,4}$/' );
+	$ignore = PLUGCli::arg( 'ignore', '/^(\.|__|CVS)/' );
+	$paths = PLUGTool::collect_files( $path, $r, $match, $ignore );
+	if( empty($paths) ){
+		trigger_error("No files matched under $path".$r?'':', try using -r?', E_USER_ERROR );
+	}
+}
+else if( ! PLUGTool::check_file($path) ){
+	trigger_error("Bad path", E_USER_ERROR );
+}
+else {
+	$paths = array( $path );
+	// don't bother checking match/ignore for single file.
+}
+
+
+// require classes and functions required
+import('PLUG.compiler.PHPCompiler');
+import('PLUG.functions.PHP.php_check_syntax');
+
+
+
+// process php compiler options
+$options = 0;
+if( PLUGCli::arg('c') || PLUGCli::arg('comments') ){
+	$options |= COMPILER_OPTION_COMMENTS;
+}
+if( PLUGCli::arg('w') || PLUGCli::arg('whitespace') ){
+	$options |= COMPILER_OPTION_WHITESPACE;
+}
+if( PLUGCli::arg('l') || PLUGCli::arg('literals') ){
+	$options |= COMPILER_OPTION_LITERALS;
+}
+if( PLUGCli::arg('L') || PLUGCli::arg('allliterals') ){
+	$options |= COMPILER_OPTION_LITERALS_ALL;
+}
+if( ! PLUGCli::arg('t') && ! PLUGCli::arg('keeptags') ){
+	$options |= COMPILER_OPTION_NICE_TAGS;
+}
+
+// bytcode-compiling requires bcompiler extension
+if( PLUGCli::arg('b') || PLUGCli::arg('bytecode') ){
+	if ( ! extension_loaded('bcompiler') && ! dl('bcompiler.so') ) {
+		prnt('bcompiler extension is not installed or not loaded, bytecode option ignored');
+	}
+	else {
+		$options |= COMPILER_OPTION_BYTECODE;
+		// bc-encoding renders some options pointless
+		$redundant = COMPILER_OPTION_COMMENTS | COMPILER_OPTION_WHITESPACE;
+		$options ^= ( $options & $redundant );
+	}
+}
+
+// which inclusion directives to compile into source
+if( PLUGCli::arg('a') || PLUGCli::arg('standalone') || PLUGCli::arg('include') === 'all' ){
+	$incfuncs = null;
+}
+else{
+	$incfuncs = explode( ',', PLUGCli::arg('include', '') );
+}
+
+// which inclusion directives to completely ignore
+// allow these to override the above "include" flag
+$incnone = explode(',', PLUGCli::arg('include-ignore','') );
+
+
+// grab and test config
+$confname = PLUGCli::arg( 'conf', 'conf' );
+// force conf. prefix
+if( $confname !== 'conf' && strpos($confname,'conf.') !== 0 ){
+	$confname = 'conf.'.$confname;
+}
+$confdir = PLUG_HOST_DIR.'/'.$confname;
+if( ! PLUGTool::check_dir($confdir) ){
+	trigger_error("conf directory expected at $confdir", E_USER_ERROR );
+}
+prnt( 'Configuration "%s"', $confname );
+
+
+$incpath = PLUGCli::arg('include-path');
+
+
+
+
+
+
+// create deployment directory, optionally clean first
+//
+$deploydir = PLUG_HOST_DIR.'/compiled/'.$confname;
+$exists = is_dir( $deploydir );
+if( $exists && ( PLUGCli::arg('n') || PLUGCli::arg('clean') ) ){
+	prnt('Cleaning deployment dir "%s"', $deploydir );
+	PLUG::exec_bin( '/bin/rm', array( '-R', $deploydir ), $s ) and trigger_error( 'Aborted', E_USER_ERROR );
+	$exists = false;
+}
+if( ! $exists ){
+	prnt('Creating deployment dir "%s"', $deploydir );
+	PLUG::exec_bin('/bin/mkdir', array( '-p', $deploydir ), $s );
+}
+
+
+
+
+/**
+ * map deployment path while checking cache
+ */
+function deploy_path( $path ){
+	global $deploydir;
+	// map source file to deployment location
+	$deploypath = $deploydir . PLUGTool::map_deployment_virtual( $path );
+	// check whether to overwrite this file
+	if( file_exists($deploypath) && filemtime($path) <= filemtime($deploypath) ){
+		// original file has not been modified, we can use this cached file.
+		return null;
+	}
+	return $deploypath; 
+}
+
+
+
+
+// iterate over collected files
+//
+foreach( $paths as $path ){
+	
+	// map source file to deployment location
+	$deploypath = deploy_path( $path );
+	if( is_null($deploypath) ){
+		// original file has not been modified, we can use this cached file.
+		prnt('File unmodified, "%s"', $path );
+		continue;
+	}
+	
+	// ensure directory path exists for copying file to
+	$targetdir = dirname( $deploypath );
+	if( ! is_dir($targetdir) ){
+		PLUG::exec_bin('/bin/mkdir', array( '-p', $targetdir ), $s );
+	}
+	
+	// process according to file type, default to php if no extension
+	$ext = strtolower( pathinfo( $path, PATHINFO_EXTENSION ) );
+	switch( $ext ){
+	
+	// Process PHP top-level script
+	case '':
+	case 'php':
+		prnt('Processing PHP script "%s"', $path );
+		// instantiate compiler - **todo** cache single object??
+		$Compiler = new PHPCompiler( $path, $options, $incfuncs, $incnone );
+		$Compiler->set_conf( $confname );
+		$incpath and $Compiler->set_include_path( $incpath );
+		$src = $Compiler->compile();
+		prnt('Exporting %u bytes to "%s"', strlen($src), $deploypath );
+		file_put_contents( $deploypath, $src );
+		if( ! php_check_syntax( $deploypath, $err ) ){
+			trigger_error('Syntax errors detected in '.basename($deploypath).', '.$err, E_USER_WARNING );
+		}
+		// recursively compile dependencies until exhausted
+		while( $path = $Compiler->next_dependency() ){
+			$deploypath = deploy_path( $path );
+			if( is_null($deploypath) ){
+				prnt(' - Dependency unmodified "%s"', $path );
+				continue;
+			}
+			prnt(' - Processing dependency "%s"', $path );
+			$src = $Compiler->compile( $path );
+			prnt(' - Exporting %u bytes to "%s"', strlen($src), $deploypath );
+			// ensure directory path exists for copying file to
+			$targetdir = dirname( $deploypath );
+			if( ! is_dir($targetdir) ){
+				PLUG::exec_bin('/bin/mkdir', array( '-p', $targetdir ), $s );
+			}			
+			file_put_contents( $deploypath, $src );
+			if( ! php_check_syntax( $deploypath, $err ) ){
+				trigger_error('Syntax errors detected in '.basename($deploypath).', '.$err, E_USER_WARNING );
+			}
+		}
+		break;
+
+	// by default - just copy to deployment location
+	default:
+		prnt('Copying regular file to "%s"', $deploypath );
+		copy( $path, $deploypath );
+	}
+	
+	
+}
+
+
+
+
+//
+if( PLUG::is_error() ){
+	prnt('');
+	prnt('There were errors compiling, here they are again in case you missed them :');
+	PLUG::dump_errors();
+}
+

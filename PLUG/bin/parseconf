@@ -1,0 +1,66 @@
+#!/usr/bin/php
+<?php
+/**
+ * PHP CLI script.
+ * Parses a php config file and exports all user defined entities as a categorized array.
+ * @author Tim Whitlock
+ * @date 07 September 2007
+ * @category PLUG
+ * @package bin
+ * @param string absolute path to file for parsing
+ * @return array [ ['var_name' => 'value', ... ], [ 'CONST_NAME' => 'value', ... ] ]
+ */
+
+try {
+ 
+	// target file passed as first cli argument
+	if( !isset($argv[1]) ){
+		throw new Exception( "Path expected as first CLI script argument" );
+	} 
+	
+	$path = $argv[1];
+	if( !file_exists( $path ) ){
+		throw new Exception( "Path not found `$path'" );
+	}
+	
+	// Grab names of variables using the tokenizer.
+	// I don't know any way to export all variables in scope without knowing their names
+	$tokens = token_get_all( file_get_contents( $path, true ) );
+	$keys = array();
+	while( list(,$token) = each($tokens) ){	
+		if( is_array($token) ){
+			switch( $token[0] ){
+			case T_VARIABLE:
+				// we will collect this variable
+				$keys[] = substr( $token[1], 1 );
+			}
+		}
+	}
+	
+	// include target file to grab global variables nativley
+	require $path;
+	$data[] = compact( $keys ); 
+	
+	// get user-defined constants
+	$consts = get_defined_constants( true );
+	if( isset( $consts['user'] ) ){
+		$data[] = $consts['user'];
+	}
+	else {
+		$data[] = array();
+	}	
+
+	// Success 
+	echo serialize( $data );
+	exit( 0 ); 
+
+
+}
+catch( Exception $Ex ){
+	// Fail
+	trigger_error( $Ex->getMessage(), E_USER_ERROR );
+	exit( -1 );
+}
+
+
+?>
