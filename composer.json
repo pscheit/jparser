@@ -1,0 +1,19 @@
+{
+    "name": "timwhitlock/jparser",
+    "description": "A JavaScript parsing library for PHP",
+    "authors": [
+        {
+            "name": "Tim Whitlock",
+            "email": "info@timwhitlock.info"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "PLUG": "lib/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+
+    }
+}
