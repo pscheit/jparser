@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JParser
  * @author Tim Whitlock
@@ -8,14 +10,14 @@
  */
 
  
-import('PLUG.JavaScript.JParserBase'); 
-//import('PLUG.JavaScript.JTokenizer'); // <- dependencies removed for distribution purposes
-//import('PLUG.JavaScript.JLex'); 
-import('PLUG.JavaScript.JGrammar'); 
-import('PLUG.JavaScript.JParseTable'); 
-import('PLUG.JavaScript.JNodes.JNodeBase'); 
-import('PLUG.JavaScript.JNodes.nonterminal.*'); 
-import('PLUG.JavaScript.JNodes.terminal.*'); 
+use PLUG\JavaScript\JParserBase; 
+//use PLUG\JavaScript\JTokenizer; // <- dependencies removed for distribution purposes
+//use PLUG\JavaScript\JLex; 
+use PLUG\JavaScript\JGrammar; 
+use PLUG\JavaScript\JParseTable; 
+use PLUG\JavaScript\JNodes\JNodeBase; 
+use PLUG\JavaScript\JNodes\nonterminal.*; 
+use PLUG\JavaScript\JNodes\terminal.*; 
 
  
 /**
@@ -117,7 +119,7 @@ class JParser extends JParserBase {
 		//J_CASE            => 'JCaseNode',
 		//J_CATCH           => 'JCatchNode',
 		//J_CHAR            => 'JCharNode',
-		//J_CLASS           => 'JClassNode',
+		//J_class           => 'JclassNode',
 		//J_COMMENT         => 'JCommentNode',
 		//J_CONST           => 'JConstNode',
 		//J_CONTINUE        => 'JContinueNode',
@@ -195,7 +197,7 @@ class JParser extends JParserBase {
 	/**
 	 * @override
 	 */
-	static function parse_string( $src, $unicode = true, $parser = __CLASS__, $lexer = 'JTokenizer' ){
+	static function parse_string( $src, $unicode = true, $parser = __class__, $lexer = 'JTokenizer' ){
 		return parent::parse_string( $src, $unicode, $parser, $lexer );
 	}
 	

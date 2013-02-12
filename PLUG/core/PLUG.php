@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing top-level PLUG class
  * @category PLUG
@@ -10,12 +12,12 @@
 /**
  * Import PLUGException class
  */
-import('PLUG.core.PLUGException');
+use PLUG\core\PLUGException;
 
 /**
  * Import PLUGError class
  */
-import('PLUG.core.PLUGError'); 
+use PLUG\core\PLUGError; 
 
 
 /**

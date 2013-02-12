@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class LRNDA
  * @author Tim Whitlock
@@ -9,10 +11,10 @@
  */
  
  
-import('PLUG.parsing.LR.LRStation');
-import('PLUG.parsing.LR.LRStateSet');
-import('PLUG.parsing.LR.LRItem');
-import('PLUG.parsing.LR.LRParseTableBuilder');
+use PLUG\parsing\LR\LRStation;
+use PLUG\parsing\LR\LRStateSet;
+use PLUG\parsing\LR\LRItem;
+use PLUG\parsing\LR\LRParseTableBuilder;
  
 
 /**

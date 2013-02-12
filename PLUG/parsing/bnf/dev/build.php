@@ -1,9 +1,11 @@
 #!/usr/bin/php
 <?php
+
+namespace PLUG;
 require dirname(__FILE__).'/../../../plugcli.php';
-import('PLUG.parsing.LexBuilder');
-import('PLUG.parsing.GrammarBuilder');
-import('PLUG.parsing.LR.*');
+use PLUG\parsing\LexBuilder;
+use PLUG\parsing\GrammarBuilder;
+use PLUG\parsing\LR\*;
 
 
 // Manually construct the BNF Lexicon
@@ -79,15 +81,21 @@ $commentData = array(
 @ob_end_flush();
 ob_start();
 $Lex->class_export('BNFLex', $commentData );
-file_put_contents( '../BNFLex.php', "<?php\n".ob_get_contents() );
+file_put_contents( '../BNFLex.php', "<?php
+
+namespace PLUG;\n".ob_get_contents() );
 ob_clean();
 
 $Grammar->class_export('BNFGrammar', $commentData );
-file_put_contents( '../BNFGrammar.php', "<?php\n".ob_get_contents() );
+file_put_contents( '../BNFGrammar.php', "<?php
+
+namespace PLUG;\n".ob_get_contents() );
 ob_clean();
 
 $Table->class_export('BNFParseTable', $commentData );
-file_put_contents( '../BNFParseTable.php', "<?php\n".ob_get_contents() );
+file_put_contents( '../BNFParseTable.php', "<?php
+
+namespace PLUG;\n".ob_get_contents() );
 ob_end_clean();
 
 

@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function collect_encapsed_string
  * @author Tim Whitlock

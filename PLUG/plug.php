@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * Development runtime include.
  * Includes essential PLUG components
@@ -38,7 +40,7 @@ require PLUG_HOST_DIR.'/PLUG/core/PLUGTool.php';
 /**
  * Import top-level PLUG class
  */ 
-import('PLUG.core.PLUG'); 
+use PLUG\core\PLUG; 
 
 
 /**

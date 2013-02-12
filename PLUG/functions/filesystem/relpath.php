@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function relpath
  * @author Tim Whitlock
@@ -10,7 +12,7 @@
 
 
 /** require path cleaning function */
-import('PLUG.functions.filesystem.cleanpath');
+use PLUG\functions\filesystem\cleanpath;
  
  
 /**

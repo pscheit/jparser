@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * Auto-generated file containing class JParseTable
  * @author Tim Whitlock
@@ -7,7 +9,7 @@
  * @version $Id: JParseTable.php,v 1.1 2009/03/22 12:51:43 twhitlock Exp $
  */
 
-import('PLUG.parsing.LR.LRParseTable');
+use PLUG\parsing\LR\LRParseTable;
 
 /**
  * Auto-generated LRParseTable subclass

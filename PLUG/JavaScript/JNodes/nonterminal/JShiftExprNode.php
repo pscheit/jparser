@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JShiftExprNode
  * @author Tim Whitlock

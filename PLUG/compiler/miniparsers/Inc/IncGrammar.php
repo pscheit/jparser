@@ -1,9 +1,11 @@
 <?php
+
+namespace PLUG;
 /**
  * Auto-generated file containing class IncGrammar
  */
 
-import('PLUG.parsing.Grammar');
+use PLUG\parsing\Grammar;
 
 /**
  * Auto-generated Grammar subclass

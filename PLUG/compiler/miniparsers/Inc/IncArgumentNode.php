@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class IncArgumentNode
  * @author Tim Whitlock
@@ -8,8 +10,8 @@
  * @version $Id: IncArgumentNode.php,v 1.1 2009/03/22 12:58:58 twhitlock Exp $
  */
 
-import('PLUG.parsing.LR.LRParseNode');
-import('PLUG.parsing.utils.decapse_string');
+use PLUG\parsing\LR\LRParseNode;
+use PLUG\parsing\utils\decapse_string;
 
  
 /**

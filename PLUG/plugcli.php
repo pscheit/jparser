@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * Development runtime include for running from command line.
  * Include this instead of plug.php when writing a command line script.
@@ -89,13 +91,13 @@ require PLUG_HOST_DIR.'/PLUG/core/PLUGTool.php';
 /**
  * Import top-level PLUG class
  */ 
-import('PLUG.core.PLUG'); 
+use PLUG\core\PLUG; 
 
 
 /**
  * Import Command line interface before intializing
  */ 
-import('PLUG.core.PLUGCli'); 
+use PLUG\core\PLUGCli; 
 
 
 /**

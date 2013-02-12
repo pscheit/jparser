@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing PLUGTool class
  * @category PLUG
@@ -55,10 +57,10 @@ final class PLUGTool {
 			case 'conf':
 				break;
 			default:
-				// Class or function import must define an entity with the same name as the file
+				// class or function import must define an entity with the same name as the file
 				// testing function first to avoid call to __autoload
 				if( ! function_exists($cname) && ! class_exists($cname) ){
-					trigger_error( "Class, or function '$cname' not defined in file `$path'", E_USER_ERROR );
+					trigger_error( "class, or function '$cname' not defined in file `$path'", E_USER_ERROR );
 				}
 			}
 		}
@@ -278,7 +280,7 @@ final class PLUGTool {
 
 /**
  * Global function for importing PLUG PHP entities.
- * @usage <code>import('PLUG.example.*');</code>
+ * @usage <code>use PLUG\example\*;</code>
  * @param string dot-delimited package description
  * @return Void
  */ 

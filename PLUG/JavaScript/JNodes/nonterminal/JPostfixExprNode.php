@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JPostfixExprNode
  * @author Tim Whitlock

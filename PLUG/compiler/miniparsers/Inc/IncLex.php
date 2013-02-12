@@ -1,9 +1,11 @@
 <?php
+
+namespace PLUG;
 /**
  * Auto-generated file containing class IncLex
  */
 
-import('PLUG.parsing.Lex');
+use PLUG\parsing\Lex;
 
 define( 'NT_STATEMENT', 501 );
 define( 'NT_CONSTRUCT', 502 );

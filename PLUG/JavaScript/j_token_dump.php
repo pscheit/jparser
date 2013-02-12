@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function j_token_dump
  * @author Tim Whitlock
@@ -15,10 +17,10 @@
  * @param array
  * @return void
  */	
-function j_token_dump( array $tokens, $LexClass = 'JLex' ){
+function j_token_dump( array $tokens, $Lexclass = 'JLex' ){
 
 	// instantiate Lex instance of appropriate type
-	$Lex = Lex::get( $LexClass );
+	$Lex = Lex::get( $Lexclass );
 
 	$line = 0;
 	foreach( $tokens as $token ){

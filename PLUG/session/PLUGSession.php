@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing PLUG.session.PLUGSession
  * @author Tim Whitlock
@@ -13,7 +15,7 @@
 /**
  * Require session object base class
  */ 
-import('PLUG.session.PLUGSessionObject');
+use PLUG\session\PLUGSessionObject;
 
 
 
@@ -164,7 +166,7 @@ class PLUGSession {
 		// decrement lifespan in incomplete object
 		// we cannot alter properties of incomplete object.. massive hack needed
 		//                                                   -------------------
-		if( $Obj instanceof __PHP_Incomplete_Class ){
+		if( $Obj instanceof __PHP_Incomplete_class ){
 			$vars = get_object_vars( $Obj );
 			if( ! empty($vars['sess_hibernate']) ){
 				// object may sleep until class available again.

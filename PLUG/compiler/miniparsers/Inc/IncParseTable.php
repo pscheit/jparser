@@ -1,9 +1,11 @@
 <?php
+
+namespace PLUG;
 /**
  * Auto-generated file containing class IncParseTable
  */
 
-import('PLUG.parsing.LR.LRParseTable');
+use PLUG\parsing\LR\LRParseTable;
 
 /**
  * Auto-generated LRParseTable subclass

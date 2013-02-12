@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JParserRaw
  * @author Tim Whitlock
@@ -8,11 +10,11 @@
  */
 
  
-import('PLUG.JavaScript.JParserBase'); 
-import('PLUG.JavaScript.JTokenizer'); 
-import('PLUG.JavaScript.JLex'); 
-import('PLUG.JavaScript.JGrammar'); 
-import('PLUG.JavaScript.JParseTable'); 
+use PLUG\JavaScript\JParserBase; 
+use PLUG\JavaScript\JTokenizer; 
+use PLUG\JavaScript\JLex; 
+use PLUG\JavaScript\JGrammar; 
+use PLUG\JavaScript\JParseTable; 
 
  
 /**
@@ -36,7 +38,7 @@ class JParserRaw extends JParserBase {
 	/**
 	 * @override
 	 */
-	static function parse_string( $src, $unicode = true, $parser = __CLASS__, $lexer = 'JTokenizer' ){
+	static function parse_string( $src, $unicode = true, $parser = __class__, $lexer = 'JTokenizer' ){
 		return parent::parse_string( $src, $unicode, $parser, $lexer );
 	}
 	

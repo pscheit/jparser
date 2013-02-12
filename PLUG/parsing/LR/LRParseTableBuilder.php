@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class LRParseTableBuilder
  * @author Tim Whitlock
@@ -9,7 +11,7 @@
  */
 
 
-import('PLUG.parsing.LR.LRParseTable');
+use PLUG\parsing\LR\LRParseTable;
 
 
 /**
@@ -37,7 +39,7 @@ class LRParseTableBuilder extends LRParseTable {
 		echo 
 		"\n */\n",
 		"\n",
-		"import('PLUG.parsing.LR.LRParseTable');\n",
+		"use PLUG\parsing\LR\LRParseTable;\n",
 		"\n",
 		"/**\n * Auto-generated LRParseTable subclass";
 		// unset page level doc block tags we don't want against the class

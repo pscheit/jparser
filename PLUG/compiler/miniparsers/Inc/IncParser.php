@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class IncParser
  * @category PLUG
@@ -6,12 +8,12 @@
  * @subpackage miniparsers 
  */	
  
-import('PLUG.PHP.PHPParserBase'); 
-import('PLUG.compiler.miniparsers.Inc.IncLex');
-import('PLUG.compiler.miniparsers.Inc.IncGrammar');
-import('PLUG.compiler.miniparsers.Inc.IncParseTable');
-import('PLUG.compiler.miniparsers.Inc.IncStatementNode');
-import('PLUG.compiler.miniparsers.Inc.IncArgumentNode');
+use PLUG\PHP\PHPParserBase; 
+use PLUG\compiler\miniparsers\Inc.IncLex;
+use PLUG\compiler\miniparsers\Inc.IncGrammar;
+use PLUG\compiler\miniparsers\Inc.IncParseTable;
+use PLUG\compiler\miniparsers\Inc.IncStatementNode;
+use PLUG\compiler\miniparsers\Inc.IncArgumentNode;
 
 
 /**
@@ -72,7 +74,9 @@ class IncParser extends PHPParserBase {
 	static function parse_string( $src ){
 		// src must begin with an opening php tag to tokenize properly
 		if( substr($src,0,2) !== '<?' ){
-			$src = "<?php\n" . $src;
+			$src = "<?php
+
+namespace PLUG;\n" . $src;
 		}
 		// use native tokenizer
 		$tokens = token_get_all( $src );

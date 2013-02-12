@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function php_highlight_string
  * @author Tim Whitlock
@@ -43,7 +45,7 @@ function php_highlight_string( $src ){
 			case T_REQUIRE_ONCE:
 			case T_INCLUDE:
 			case T_INCLUDE_ONCE:
-			case T_CLASS:
+			case T_class:
 			case T_PUBLIC:
 			case T_PRIVATE:
 			case T_PROTECTED:

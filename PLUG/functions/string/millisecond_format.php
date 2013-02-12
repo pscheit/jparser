@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * @category PLUG
  * @package functions

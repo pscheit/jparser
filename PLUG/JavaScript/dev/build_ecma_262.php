@@ -1,14 +1,16 @@
 #!/usr/bin/php
 <?php
+
+namespace PLUG;
 /**
  * Build JParser
  */
 require dirname($argv[0]).'/../../plugcli.php';
 
-import('PLUG.time.Timer');
-import('PLUG.parsing.*');
-import('PLUG.parsing.LR.*');
-import('PLUG.parsing.bnf.*');
+use PLUG\time\Timer;
+use PLUG\parsing\*;
+use PLUG\parsing\LR\*;
+use PLUG\parsing\bnf\*;
 
 
 $lexname = 'JLexBase';
@@ -67,13 +69,19 @@ printf( "Table exported in %f milliseconds\n", $Timer->reset() );
 @ob_end_flush();
 ob_start();
 $Lex->class_export( $lexname, $commentData );
-file_put_contents( $classdir.'/'.$lexname.'.php', "<?php\n".ob_get_contents() );
+file_put_contents( $classdir.'/'.$lexname.'.php', "<?php
+
+namespace PLUG;\n".ob_get_contents() );
 ob_clean();
 $Grammar->class_export( $grammarname, $commentData );
-file_put_contents( $classdir.'/'.$grammarname.'.php', "<?php\n".ob_get_contents() );
+file_put_contents( $classdir.'/'.$grammarname.'.php', "<?php
+
+namespace PLUG;\n".ob_get_contents() );
 ob_clean();
 $Table->class_export( $tablename, $commentData );
-file_put_contents( $classdir.'/'.$tablename.'.php', "<?php\n".ob_get_contents() );
+file_put_contents( $classdir.'/'.$tablename.'.php', "<?php
+
+namespace PLUG;\n".ob_get_contents() );
 ob_end_clean();
 
 

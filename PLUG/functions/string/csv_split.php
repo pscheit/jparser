@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function csv_split
  * @author Tim Whitlock

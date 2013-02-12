@@ -1,6 +1,8 @@
 <?php
+
+namespace PLUG;
 /**
- * File containing PLUGCli Class
+ * File containing PLUGCli class
  * @version $Id: PLUGCli.php,v 1.1 2009/03/22 12:42:21 twhitlock Exp $
  * @author Tim Whitlock
  * @category PLUG
@@ -63,7 +65,7 @@ final class PLUGCli {
 		}
 		
 		// Default error logger function
-		PLUG::set_error_logger( array(__CLASS__,'format_logline') );
+		PLUG::set_error_logger( array(__class__,'format_logline') );
 		
 		// parse command line arguments from argv global
 		global $argv, $argc;

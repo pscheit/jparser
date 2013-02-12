@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JTokenizer
  * @author Tim Whitlock
@@ -8,8 +10,8 @@
  */
 
 
-import('PLUG.JavaScript.JLex');
-import('PLUG.JavaScript.JTokenizerBase');
+use PLUG\JavaScript\JLex;
+use PLUG\JavaScript\JTokenizerBase;
 
 
 

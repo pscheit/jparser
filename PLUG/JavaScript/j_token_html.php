@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function j_token_html
  * @author Tim Whitlock
@@ -9,7 +11,7 @@
 
 
 /** Require Tokenizer */
-import('PLUG.JavaScript.j_token_get_all');
+use PLUG\JavaScript\j_token_get_all;
  
  
 /**
@@ -22,10 +24,10 @@ import('PLUG.JavaScript.j_token_get_all');
  * @param string optionally specify HTML tag instead of "OL", e.g. "DIV"
  * @return string
  */
-function j_token_html( $src , $ws = true, $unicode = true, $ol = 'ol', $LexClass = 'JLex' ){
+function j_token_html( $src , $ws = true, $unicode = true, $ol = 'ol', $Lexclass = 'JLex' ){
 	
 	// instantiate Lex instance of appropriate type
-	$Lex = Lex::get( $LexClass );
+	$Lex = Lex::get( $Lexclass );
 		
 	// convert non-unix line breaks
 	// @todo  replace Unicode breaks too?

@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function PLUG.parsing.utils.decapse_string
  * @author Tim Whitlock

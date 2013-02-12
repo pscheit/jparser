@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing PLUGError class
  * @category PLUG

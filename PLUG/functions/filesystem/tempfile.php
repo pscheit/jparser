@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function tempfile
  * @author Tim Whitlock

@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class LRParser
  * @author Tim Whitlock
@@ -9,9 +11,9 @@
  */
 
  
-import('PLUG.parsing.Parser'); 
-import('PLUG.parsing.LR.LRParseTable');
-import('PLUG.parsing.LR.LRParseNode');
+use PLUG\parsing\Parser; 
+use PLUG\parsing\LR\LRParseTable;
+use PLUG\parsing\LR\LRParseNode;
  
  
 /**

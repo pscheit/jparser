@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG;
+
 /**
  * File containing class PHPCompiler
  * @author Tim Whitlock
@@ -11,19 +14,19 @@
 /**
  * Require miniparser for processing complex include statements
  */ 
-import('PLUG.compiler.miniparsers.Inc.IncParser'); 
+use PLUG\compiler\miniparsers\Inc\IncParser; 
 
 /**
  * Require path mapping tools
  */
-import('PLUG.functions.filesystem.cleanpath'); 
-import('PLUG.functions.filesystem.findpath'); 
-import('PLUG.functions.filesystem.relpath'); 
+use PLUG\functions\filesystem\cleanpath; 
+use PLUG\functions\filesystem\findpath; 
+use PLUG\functions\filesystem\relpath; 
 
 /**
  * Require other utils
  */
-import('PLUG.functions.filesystem.tempfile'); 
+use PLUG\functions\filesystem\tempfile; 
 
 
 
@@ -72,6 +75,7 @@ define( 'COMPILER_OPTION_NICE_TAGS', 32 );
  * @category PLUG
  * @package compiler
  */
+
 class PHPCompiler {
 	
 	/**
@@ -592,7 +596,9 @@ class PHPCompiler {
 				// add on first T_OPEN_TAG
 			}
 			else {
-				$src = "<?php\n$header";
+				$src = "<?php
+
+namespace PLUG;\n$header";
 				unset( $header );
 				$this->inphp = true;
 			}
@@ -876,7 +882,9 @@ class PHPCompiler {
 			}
 			else {
 				$ws = $this->opt(COMPILER_OPTION_WHITESPACE) ? "\n" : ' ';
-				$src .= '<?php'.$ws;
+				$src .= '<?php
+
+namespace PLUG;'.$ws;
 			}
 		}
 		return $src;	
@@ -897,7 +905,9 @@ class PHPCompiler {
 			// this may result in back to back tags, which we can avoid with a bit of string manipulation.
 			$makenice = $this->opt(COMPILER_OPTION_NICE_TAGS);
 			
-			if( $makenice && substr( $src, -5 ) === '<?php' ){
+			if( $makenice && substr( $src, -5 ) === '<?php
+
+namespace PLUG;' ){
 				// trim trailing open tag, so no need to close
 				$src = substr_replace( $src, '', -5 );
 			}

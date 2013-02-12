@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * @category PLUG
  * @package functions
@@ -6,7 +8,7 @@
  */
  
 
-import('PLUG.functions.string.memory_format');
+use PLUG\functions\string\memory_format;
  
 
 /**

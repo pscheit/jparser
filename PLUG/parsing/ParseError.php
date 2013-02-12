@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class ParseError
  * @author Tim Whitlock

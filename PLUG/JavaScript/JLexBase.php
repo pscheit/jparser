@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * Auto-generated file containing class JLexBase
  * @author Tim Whitlock
@@ -7,7 +9,7 @@
  * @version $Id: JLexBase.php,v 1.1 2009/03/22 12:51:43 twhitlock Exp $
  */
 
-import('PLUG.parsing.Lex');
+use PLUG\parsing\Lex;
 
 define( 'J_FUNCTION', 1 );
 define( 'J_IDENTIFIER', 2 );
@@ -60,7 +62,7 @@ define( 'J_CHAR', 48 );
 define( 'J_FINAL', 49 );
 define( 'J_NATIVE', 50 );
 define( 'J_SYNCHRONIZED', 51 );
-define( 'J_CLASS', 52 );
+define( 'J_class', 52 );
 define( 'J_FLOAT', 53 );
 define( 'J_PACKAGE', 54 );
 define( 'J_THROWS', 55 );
@@ -218,7 +220,7 @@ protected $names = array (
   49 => 'J_FINAL',
   50 => 'J_NATIVE',
   51 => 'J_SYNCHRONIZED',
-  52 => 'J_CLASS',
+  52 => 'J_class',
   53 => 'J_FLOAT',
   54 => 'J_PACKAGE',
   55 => 'J_THROWS',

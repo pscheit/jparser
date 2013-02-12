@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class LexBuilder
  * @author Tim Whitlock
@@ -8,7 +10,7 @@
  */
  
 
-import('PLUG.parsing.Lex');
+use PLUG\parsing\Lex;
 
 
 /**
@@ -98,7 +100,7 @@ class LexBuilder extends Lex {
 		echo 
 		"\n */\n",
 		"\n",
-		"import('PLUG.parsing.Lex');\n",
+		"use PLUG\parsing\Lex;\n",
 		"\n";
 		// hard-define integer symbols
 		// excluding re-definitions or existing symbols

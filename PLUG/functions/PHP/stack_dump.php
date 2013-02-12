@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * Provides neater view of debug_backtrace();
  * @package functions

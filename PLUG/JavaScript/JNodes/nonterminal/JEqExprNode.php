@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JEqExprNode
  * @author Tim Whitlock

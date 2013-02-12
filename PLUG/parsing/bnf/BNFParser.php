@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * Auto-generated template file containing LR parser class BNFParser 
  * @category PLUG
@@ -6,20 +8,20 @@
  * @subpackage bnf 
  */	
  
-import('PLUG.parsing.LR.LRParser'); 
+use PLUG\parsing\LR\LRParser; 
 
 // include tokenizer
-import('PLUG.parsing.bnf.bnf_tokenize');
-import('PLUG.parsing.bnf.BNFLex');
-import('PLUG.parsing.bnf.BNFGrammar');
-import('PLUG.parsing.bnf.BNFParseTable');
+use PLUG\parsing\bnf\bnf_tokenize;
+use PLUG\parsing\bnf\BNFLex;
+use PLUG\parsing\bnf\BNFGrammar;
+use PLUG\parsing\bnf\BNFParseTable;
 
 // include custom node classes
-import('PLUG.parsing.bnf.BNFRulesNode');
-import('PLUG.parsing.bnf.BNFRuleNode');
-import('PLUG.parsing.bnf.BNFExpressionNode');
-import('PLUG.parsing.bnf.BNFListNode');
-import('PLUG.parsing.bnf.BNFTermNode');
+use PLUG\parsing\bnf\BNFRulesNode;
+use PLUG\parsing\bnf\BNFRuleNode;
+use PLUG\parsing\bnf\BNFExpressionNode;
+use PLUG\parsing\bnf\BNFListNode;
+use PLUG\parsing\bnf\BNFTermNode;
 
 
 /**

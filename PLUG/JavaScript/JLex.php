@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JLex
  * @category PLUG
@@ -9,7 +11,7 @@
 /**
  * Require auto-generated super class containing symbol definitions
  */
-import('PLUG.JavaScript.JLexBase');
+use PLUG\JavaScript\JLexBase;
 
 
 /**
@@ -41,7 +43,7 @@ class JLex extends JLexBase {
 		'boolean'  => J_BOOLEAN,   'export'     => J_EXPORT,     'interface' => J_INTERFACE,  'static'       => J_STATIC,  
 		'byte'     => J_BYTE,      'extends'    => J_EXTENDS,    'long'      => J_LONG,       'super'        => J_SUPER,  
 		'char'     => J_CHAR,      'final'      => J_FINAL,      'native'    => J_NATIVE,     'synchronized' => J_SYNCHRONIZED,  
-		'class'    => J_CLASS,     'float'      => J_FLOAT,      'package'   => J_PACKAGE,    'throws'       => J_THROWS,  
+		'class'    => J_class,     'float'      => J_FLOAT,      'package'   => J_PACKAGE,    'throws'       => J_THROWS,  
 		'const'    => J_CONST,     'goto'       => J_GOTO,       'private'   => J_PRIVATE,    'transient'    => J_TRANSIENT,  
 		'debugger' => J_DEBUGGER,  'implements' => J_IMPLEMENTS, 'protected' => J_PROTECTED,  'volatile'     => J_VOLATILE,  
 		'double'   => J_DOUBLE,    'import'     => J_IMPORT,     'public'    => J_PUBLIC, 
@@ -62,7 +64,7 @@ class JLex extends JLexBase {
 	 * @return JLex
 	 */
 	static function singleton(){
-		return Lex::get(__CLASS__);
+		return Lex::get(__class__);
 	}
 	
 

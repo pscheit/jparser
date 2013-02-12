@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function PLUG.functions.filesystem.preg_find
  * @author Tim Whitlock

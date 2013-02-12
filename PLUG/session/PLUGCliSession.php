@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing PLUG.session.PLUGCliSession
  * @author Tim Whitlock
@@ -12,7 +14,7 @@
 /**
  * Require session base class
  */ 
-import('PLUG.session.PLUGSession');
+use PLUG\session\PLUGSession;
 
  
 /**

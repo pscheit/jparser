@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing function bnf_tokenize
  * @category PLUG
@@ -7,8 +9,8 @@
  */
 
  
-import('PLUG.parsing.bnf.BNFLex');
-import('PLUG.parsing.utils.collect_encapsed_string');
+use PLUG\parsing\bnf\BNFLex;
+use PLUG\parsing\utils\collect_encapsed_string;
 
 /**
  * Tokenize a bnf string

@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class LRParseNode
  * @author Tim Whitlock
@@ -8,7 +10,7 @@
  * @version $Id: LRParseNode.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
-import('PLUG.parsing.ParseNode'); 
+use PLUG\parsing\ParseNode; 
  
 /**
  * ParseNode class extended for LR specific functionality.

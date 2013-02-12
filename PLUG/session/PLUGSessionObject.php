@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing PLUG.session.PLUGSessionObject class
  * @author Tim Whitlock
@@ -12,7 +14,7 @@
 /**
  * Inherit base object
  */ 
-import('PLUG.core.PLUGObject');
+use PLUG\core\PLUGObject;
 
  
  

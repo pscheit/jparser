@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JReturnStatementNode
  * @author Tim Whitlock

@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class Parser
  * @author Tim Whitlock
@@ -8,7 +10,7 @@
  */
 
 
-import('PLUG.parsing.ParseError');
+use PLUG\parsing\ParseError;
 
  
 /**

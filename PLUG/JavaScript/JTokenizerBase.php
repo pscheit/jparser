@@ -1,4 +1,6 @@
 <?php
+
+namespace PLUG;
 /**
  * File containing class JTokenizerBase
  * @author Tim Whitlock
