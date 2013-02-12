@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\JavaScript;
 /**
  * File containing class JParser
  * @author Tim Whitlock
@@ -11,13 +11,10 @@ namespace PLUG;
 
  
 use PLUG\JavaScript\JParserBase; 
-//use PLUG\JavaScript\JTokenizer; // <- dependencies removed for distribution purposes
-//use PLUG\JavaScript\JLex; 
+use PLUG\JavaScript\JLex; 
 use PLUG\JavaScript\JGrammar; 
 use PLUG\JavaScript\JParseTable; 
 use PLUG\JavaScript\JNodes\JNodeBase; 
-use PLUG\JavaScript\JNodes\nonterminal.*; 
-use PLUG\JavaScript\JNodes\terminal.*; 
 
  
 /**

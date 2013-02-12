@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\parsing;
 /**
  * File containing class GrammarBuilder
  * @author Tim Whitlock

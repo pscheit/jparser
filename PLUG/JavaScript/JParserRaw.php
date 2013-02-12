@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\JavaScript;
 /**
  * File containing class JParserRaw
  * @author Tim Whitlock

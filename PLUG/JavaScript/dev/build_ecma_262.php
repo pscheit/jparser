@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 
-namespace PLUG;
+namespace PLUG\JavaScript;
 /**
  * Build JParser
  */
@@ -71,17 +71,17 @@ ob_start();
 $Lex->class_export( $lexname, $commentData );
 file_put_contents( $classdir.'/'.$lexname.'.php', "<?php
 
-namespace PLUG;\n".ob_get_contents() );
+namespace PLUG\JavaScript;\n".ob_get_contents() );
 ob_clean();
 $Grammar->class_export( $grammarname, $commentData );
 file_put_contents( $classdir.'/'.$grammarname.'.php', "<?php
 
-namespace PLUG;\n".ob_get_contents() );
+namespace PLUG\JavaScript;\n".ob_get_contents() );
 ob_clean();
 $Table->class_export( $tablename, $commentData );
 file_put_contents( $classdir.'/'.$tablename.'.php', "<?php
 
-namespace PLUG;\n".ob_get_contents() );
+namespace PLUG\JavaScript;\n".ob_get_contents() );
 ob_end_clean();
 
 

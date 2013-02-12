@@ -1,6 +1,9 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\JavaScript\JNodes\terminal;
+
+use PLUG\JavaScript\JNodes\JNodeBase;
+
 /**
  * File containing class JIdentifierNode
  * @author Tim Whitlock

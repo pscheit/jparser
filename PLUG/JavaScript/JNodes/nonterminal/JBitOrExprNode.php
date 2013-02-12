@@ -1,6 +1,8 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\JavaScript\JNodes\nonterminal;
+
+use PLUG\JavaScript\JNodes\JNodeBase;
 /**
  * File containing class JBitOrExprNode
  * @author Tim Whitlock

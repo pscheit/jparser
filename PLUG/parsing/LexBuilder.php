@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\parsing;
 /**
  * File containing class LexBuilder
  * @author Tim Whitlock

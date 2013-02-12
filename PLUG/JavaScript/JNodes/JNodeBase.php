@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\JavaScript\JNodes;
 /**
  * File containing class JNodeBase
  * @author Tim Whitlock

@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\JavaScript;
 /**
  * Auto-generated file containing class JParseTable
  * @author Tim Whitlock
