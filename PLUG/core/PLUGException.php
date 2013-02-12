@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\core;
 /**
  * File containing PLUG.core.PLUGException class
  * @category PLUG

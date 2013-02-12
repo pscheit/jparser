@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\compiler\miniparsers;
 /**
  * Auto-generated file containing class IncParseTable
  */

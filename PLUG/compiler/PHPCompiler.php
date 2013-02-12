@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\compiler;
 
 /**
  * File containing class PHPCompiler
@@ -598,7 +598,7 @@ class PHPCompiler {
 			else {
 				$src = "<?php
 
-namespace PLUG;\n$header";
+namespace PLUG\compiler;\n$header";
 				unset( $header );
 				$this->inphp = true;
 			}
@@ -884,7 +884,7 @@ namespace PLUG;\n$header";
 				$ws = $this->opt(COMPILER_OPTION_WHITESPACE) ? "\n" : ' ';
 				$src .= '<?php
 
-namespace PLUG;'.$ws;
+namespace PLUG\compiler;'.$ws;
 			}
 		}
 		return $src;	
@@ -907,7 +907,7 @@ namespace PLUG;'.$ws;
 			
 			if( $makenice && substr( $src, -5 ) === '<?php
 
-namespace PLUG;' ){
+namespace PLUG\compiler;' ){
 				// trim trailing open tag, so no need to close
 				$src = substr_replace( $src, '', -5 );
 			}

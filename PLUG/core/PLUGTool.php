@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\core;
 /**
  * File containing PLUGTool class
  * @category PLUG

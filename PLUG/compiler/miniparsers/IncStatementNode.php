@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\compiler\miniparsers;
 /**
  * File containing class IncStatementNode
  * @author Tim Whitlock

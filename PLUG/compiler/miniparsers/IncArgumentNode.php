@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\compiler\miniparsers;
 /**
  * File containing class IncArgumentNode
  * @author Tim Whitlock
@@ -11,7 +11,7 @@ namespace PLUG;
  */
 
 use PLUG\parsing\LR\LRParseNode;
-use PLUG\parsing\utils\decapse_string;
+use PLUG\parsing\Util;
 
  
 /**
@@ -63,7 +63,7 @@ class IncArgumentNode extends LRParseNode {
 
 				// string literal
 				case T_CONSTANT_ENCAPSED_STRING:
-					$value .= decapse_string( $s );
+					$value .= Util::decapse_string( $s );
 					continue 2;
 
 					
@@ -106,7 +106,7 @@ class IncArgumentNode extends LRParseNode {
 						$k = (int) $k;
 					}
 					else {
-						$k = decapse_string( $k );
+						$k = Util::decapse_string( $k );
 					}
 					if( array_key_exists( $k, $a ) ){
 						$value .= (string) $a[$k];
