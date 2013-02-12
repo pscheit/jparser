@@ -8,9 +8,9 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "PLUG": "lib/"
-        }
+        "files": [
+          "PLUG/core/PLUGTool.php"
+        ]
     },
     "minimum-stability": "dev",
     "require": {
