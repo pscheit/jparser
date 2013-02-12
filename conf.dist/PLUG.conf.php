@@ -12,10 +12,10 @@ define('PLUG_ERROR_REPORTING', E_ALL | E_STRICT );
 define('PLUG_ERROR_LOGGING', E_ALL | E_STRICT ); 
 
 /** Virtual host directory */
-define('PLUG_HOST_DIR', '/path/to/jparser' );
+define('PLUG_HOST_DIR', realpath(__DIR__.DIRECTORY_SEPARATOR.'..'));
 
 /** Virtual document root directory */
-define('PLUG_VIRTUAL_DIR', '/path/to/jparser/httpdocs' );
+define('PLUG_VIRTUAL_DIR', PLUG_HOST_DIR.DIRECTORY_SEPARATOR.'httpdocs' );
 
 /** temporary directory */
 define('PLUG_TMP_DIR', '/tmp' );

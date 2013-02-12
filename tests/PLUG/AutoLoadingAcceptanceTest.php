@@ -1,6 +1,6 @@
 <?php
 
-class AutoLoadingAcceptanceTest extends \PHPUnit_Framework\TestCase {
+class AutoLoadingAcceptanceTest extends \PHPUnit_Framework_TestCase {
   
   
   public function testPLUGCoreIsDefined() {

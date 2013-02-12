@@ -9,6 +9,7 @@
     ],
     "autoload": {
         "files": [
+          "conf.dist/PLUG.conf.php",
           "PLUG/core/PLUGTool.php"
         ]
     },
