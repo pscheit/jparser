@@ -1,6 +1,7 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\session;
+
 /**
  * File containing PLUG.session.PLUGSessionObject class
  * @author Tim Whitlock

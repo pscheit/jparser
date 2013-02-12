@@ -1,6 +1,7 @@
 <?php
 
-namespace PLUG;
+namespace PLUG\session;
+
 /**
  * File containing PLUG.session.PLUGSession
  * @author Tim Whitlock

@@ -16,6 +16,6 @@
     },
     "minimum-stability": "dev",
     "require": {
-
+        "phpmd/phpmd" : "1.4.0"
     }
 }
