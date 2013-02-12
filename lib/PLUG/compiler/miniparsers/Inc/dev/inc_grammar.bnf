@@ -1,0 +1,54 @@
+# mini grammer for parsing include statements
+# this is used by the PLUG compiler
+
+
+<NT_STATEMENT> 
+	: <NT_CONSTRUCT> ";"
+    | <NT_FUNC_CALL> ";"
+    ;
+
+<NT_CONSTRUCT> 
+	: <NT_KEYWORD> <NT_ARG_LIST>
+	;
+
+<NT_FUNC_CALL> 
+	: T_STRING "(" <NT_ARG_LIST> ")"
+	;
+
+<NT_KEYWORD> 
+	: T_INCLUDE
+    | T_INCLUDE_ONCE
+    | T_REQUIRE
+    | T_REQUIRE_ONCE
+    ;
+			  
+<NT_ARG_LIST> 
+	: <NT_ARG> 
+	| <NT_ARG> "," <NT_ARG_LIST>
+	;
+
+<NT_ARG> 
+	: <NT_STRING>
+    | <NT_STRING> "." <NT_ARG>
+    ;
+			 
+<NT_STRING> 
+	: T_CONSTANT_ENCAPSED_STRING
+    | T_STRING
+	| T_FILE
+	| T_VARIABLE
+	| <NT_FUNC_CALL>
+	| <NT_ARRAY_ACCESS>
+	;
+	
+<NT_ARRAY_ACCESS> 
+	: T_VARIABLE "[" T_LNUMBER "]"
+	| T_VARIABLE "[" T_CONSTANT_ENCAPSED_STRING "]"
+	;
+
+
+
+
+
+	
+	

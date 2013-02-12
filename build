@@ -1,0 +1,57 @@
+#!/bin/bash
+# Build the jParser and jTokenizer libraries
+# @param $1 version number
+#
+
+cd `dirname $0`;
+
+# check PHP exists
+#
+if [ ! -x /usr/bin/php ]; then
+	echo "/usr/bin/php not found";
+	exit;
+fi
+
+# Check PHP version is at least 5.2
+#
+chmod u+x PLUG/bin/*
+PLUG/bin/version "5.2.0"
+if [ $? != 0 ]; then
+   echo "Requires PHP 5.2 binary";
+   exit 1;
+fi
+
+# Build libraries and put them in jparser-libs
+#
+mkdir -p compiled
+PLUG/bin/compile jparser-src -an --conf=dist --include-ignore=require_once
+mv compiled/conf.dist/jparser-src/*.php httpdocs/jparser-libs
+
+
+# Zip up the libraries for distribution
+#
+TMP=compiled/jparser-$1 
+mkdir -p $TMP
+cp -pR httpdocs/*.* httpdocs/jparser-libs httpdocs/jparser-examples $TMP
+cd compiled
+tar -cvzf jparser-$1.tgz jparser-$1
+mv jparser-$1.tgz ..
+cd ..
+
+# Zip up the full devel package using a temporary folder
+#
+TMP=compiled/jparser-devel-$1
+mkdir -p $TMP
+cp -Rp PLUG httpdocs conf.dist build LICENSE.txt README.txt $TMP
+cp -Rp $TMP/conf.dist $TMP/conf
+rm $TMP/conf/banner.txt
+cp -p conf/README.txt $TMP/conf
+cd compiled
+tar -cvz --exclude CVS -f jparser-devel-$1.tgz jparser-devel-$1
+mv jparser-devel-$1.tgz ..
+cd ..
+
+# Clean up and we're done
+rm -Rf compiled;
+echo "Done";
+exit 0;

@@ -1,0 +1,41 @@
+ol.javascript {
+}
+ol.javascript li {
+	font: normal 10pt 'Courier New',Courier,Monaco,monospace;
+	white-space: pre;
+	background-color:#FAFAFA;
+}
+ol.javascript li.odd {
+	background-color:#F3F3F3;
+}
+
+span.J_COMMENT {
+	color: #FF00FF;
+}
+span.J_IDENTIFIER {
+	color: #333333;
+}
+span.J_KEYWORD {
+	font-weight: bold;
+	color: #0000CC;
+}
+span.J_PUNCTUATOR {
+	font-weight: bold;
+}
+span.J_LITERAL {
+	color: #000000;
+	font-weight: bold;
+}
+span.J_STRING_LITERAL {
+	color: #666666;
+	font-weight: normal;
+}
+span.J_NUMERIC_LITERAL {
+	color: #CC0033;
+	font-weight: normal;
+}
+span.J_REGEX {
+	color: #00CC00;
+	font-weight: normal;
+}
+
