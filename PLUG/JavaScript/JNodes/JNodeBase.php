@@ -8,6 +8,7 @@
  * @version $Id: JNodeBase.php,v 1.1 2009/03/22 12:51:08 twhitlock Exp $
  */
  
+ import('PLUG.parsing.LR.LRParseNode');
  
 /**
  * Default JavaScript node class
