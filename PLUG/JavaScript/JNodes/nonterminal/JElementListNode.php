@@ -7,8 +7,9 @@
  * @subpackage JNodes
  * @version $Id: JElementListNode.php,v 1.1 2009/03/22 12:51:08 twhitlock Exp $
  */
- 
- 
+
+import('PLUG.JavaScript.JNodes.JNodeBase');
+
 /**
  * JavaScript node class for the J_ELEMENT_LIST symbol
  * @category PLUG

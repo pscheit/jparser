@@ -7,8 +7,9 @@
  * @subpackage JNodes
  * @version $Id: JLabelledStatementNode.php,v 1.1 2009/03/22 12:51:09 twhitlock Exp $
  */
- 
- 
+
+import('PLUG.JavaScript.JNodes.JNodeBase');
+
 /**
  * JavaScript node class for the J_LABELLED_STATEMENT symbol
  * @category PLUG
