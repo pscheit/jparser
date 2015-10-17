@@ -49,7 +49,7 @@ abstract class LRParser extends Parser {
 	 * overloaded default parse node
 	 * @var string
 	 */
-	protected $default_node_class = 'LRParseNode';
+	protected $default_node_class = LRParseNode::class;
 	
 
 	/**

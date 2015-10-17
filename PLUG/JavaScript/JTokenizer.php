@@ -33,7 +33,7 @@ class JTokenizer extends JTokenizerBase {
 	 */	
 	function __construct( $whitespace, $unicode ){
 		parent::__construct( $whitespace, $unicode );
-		$this->Lex = Lex::get('JLex');
+		$this->Lex = Lex::get(JLex::class);
 	}		
 		
 	

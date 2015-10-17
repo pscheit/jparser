@@ -38,8 +38,8 @@ class IncParser extends PHPParserBase {
 		// set pre-compiled parse table
 		$this->Table = new IncParseTable;
 		// register custom parse nodes ...
-		$this->register_node_class( NT_STATEMENT, 'IncStatementNode' );
-		$this->register_node_class( NT_ARG, 'IncArgumentNode' );
+		$this->register_node_class( NT_STATEMENT, IncStatementNode::class );
+		$this->register_node_class( NT_ARG, IncArgumentNode::class );
 	}
 	
 	

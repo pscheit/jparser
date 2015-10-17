@@ -23,6 +23,6 @@ use PLUG\parsing\Lex;
  * @return string
  */	
 function j_token_name( $t ){
-	$Lex = Lex::get('JLex');
+	$Lex = Lex::get(JLex::class);
 	return $Lex->name( $t );
 }

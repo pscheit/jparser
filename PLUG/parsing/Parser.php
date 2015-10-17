@@ -12,6 +12,7 @@ namespace PLUG\parsing;
 
 use Exception;
 use PLUG\parsing\ParseError;
+use PLUG\parsing\ParseNode;
 
  
 /**
@@ -43,7 +44,7 @@ abstract class Parser {
 	/**
 	 * @var string
 	 */
-	protected $default_node_class = 'ParseNode';
+	protected $default_node_class = ParseNode::class;
 	
 	/**
 	 * input token stream

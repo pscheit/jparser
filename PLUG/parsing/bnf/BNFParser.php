@@ -44,12 +44,12 @@ class BNFParser extends LRParser {
 		// set pre-compiled parse table
 		$this->Table = new BNFParseTable;
 		// register custom parse nodes ...
-		$this->register_node_class( BNF_RULES, 'BNFRulesNode' );
-		$this->register_node_class( BNF_RULE, 'BNFRuleNode' );
-		$this->register_node_class( BNF_EMPTY_RULE, 'BNFRuleNode' );
-		$this->register_node_class( BNF_EXPRESSION, 'BNFExpressionNode' );
-		$this->register_node_class( BNF_LIST, 'BNFListNode' );
-		$this->register_node_class( BNF_TERM, 'BNFTermNode' );		
+		$this->register_node_class( BNF_RULES, BNFRulesNode::class );
+		$this->register_node_class( BNF_RULE, BNFRuleNode::class );
+		$this->register_node_class( BNF_EMPTY_RULE, BNFRuleNode::class );
+		$this->register_node_class( BNF_EXPRESSION, BNFExpressionNode::class );
+		$this->register_node_class( BNF_LIST, BNFListNode::class );
+		$this->register_node_class( BNF_TERM, BNFTermNode::class );
 	}
 
 
