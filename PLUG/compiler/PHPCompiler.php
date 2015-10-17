@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\compiler;
+
 /**
  * File containing class PHPCompiler
  * @author Tim Whitlock
@@ -11,22 +14,22 @@
 /**
  * Require miniparser for processing complex include statements
  */ 
-import('PLUG.compiler.miniparsers.Inc.IncParser'); 
+use PLUG\compiler\miniparsers\Inc\IncParser;
+use PLUG\core\PLUG;
+use PLUG\core\PLUGException;
+use PLUG\core\PLUGTool;
 
 /**
  * Require path mapping tools
  */
-import('PLUG.functions.filesystem.cleanpath'); 
-import('PLUG.functions.filesystem.findpath'); 
-import('PLUG.functions.filesystem.relpath'); 
+use function PLUG\functions\filesystem\cleanpath;
+use function PLUG\functions\filesystem\findpath;
+use function PLUG\functions\filesystem\relpath;
 
 /**
  * Require other utils
  */
-import('PLUG.functions.filesystem.tempfile'); 
-
-
-
+use function PLUG\functions\filesystem\tempfile;
  
 /**
  * Option to keep comments in compiled source, default is off

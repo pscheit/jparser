@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\core;
+
 /**
  * File containing PLUG.core.PLUGObject class
  * @author Tim Whitlock

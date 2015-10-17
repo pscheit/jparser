@@ -1,25 +1,29 @@
 <?php
+
+namespace PLUG\parsing\bnf;
+
 /**
  * Auto-generated template file containing LR parser class BNFParser 
  * @category PLUG
  * @package parsing
  * @subpackage bnf 
  */	
- 
-import('PLUG.parsing.LR.LRParser'); 
+
+use Exception;
+use PLUG\parsing\LR\LRParser; 
 
 // include tokenizer
-import('PLUG.parsing.bnf.bnf_tokenize');
-import('PLUG.parsing.bnf.BNFLex');
-import('PLUG.parsing.bnf.BNFGrammar');
-import('PLUG.parsing.bnf.BNFParseTable');
+use function PLUG\parsing\bnf\bnf_tokenize;
+use PLUG\parsing\bnf\BNFLex;
+use PLUG\parsing\bnf\BNFGrammar;
+use PLUG\parsing\bnf\BNFParseTable;
 
 // include custom node classes
-import('PLUG.parsing.bnf.BNFRulesNode');
-import('PLUG.parsing.bnf.BNFRuleNode');
-import('PLUG.parsing.bnf.BNFExpressionNode');
-import('PLUG.parsing.bnf.BNFListNode');
-import('PLUG.parsing.bnf.BNFTermNode');
+use PLUG\parsing\bnf\BNFRulesNode;
+use PLUG\parsing\bnf\BNFRuleNode;
+use PLUG\parsing\bnf\BNFExpressionNode;
+use PLUG\parsing\bnf\BNFListNode;
+use PLUG\parsing\bnf\BNFTermNode;
 
 
 /**
@@ -40,12 +44,12 @@ class BNFParser extends LRParser {
 		// set pre-compiled parse table
 		$this->Table = new BNFParseTable;
 		// register custom parse nodes ...
-		$this->register_node_class( BNF_RULES, 'BNFRulesNode' );
-		$this->register_node_class( BNF_RULE, 'BNFRuleNode' );
-		$this->register_node_class( BNF_EMPTY_RULE, 'BNFRuleNode' );
-		$this->register_node_class( BNF_EXPRESSION, 'BNFExpressionNode' );
-		$this->register_node_class( BNF_LIST, 'BNFListNode' );
-		$this->register_node_class( BNF_TERM, 'BNFTermNode' );		
+		$this->register_node_class( BNF_RULES, BNFRulesNode::class );
+		$this->register_node_class( BNF_RULE, BNFRuleNode::class );
+		$this->register_node_class( BNF_EMPTY_RULE, BNFRuleNode::class );
+		$this->register_node_class( BNF_EXPRESSION, BNFExpressionNode::class );
+		$this->register_node_class( BNF_LIST, BNFListNode::class );
+		$this->register_node_class( BNF_TERM, BNFTermNode::class );
 	}
 
 
@@ -53,7 +57,7 @@ class BNFParser extends LRParser {
 	/**
 	 * parse input string
 	 * @param string input source
-	 * @return ParseNode
+	 * @return \PLUG\parsing\ParseNode
 	 */
 	static function parse_string( $s ){
 		if( $s == '' ){
@@ -71,7 +75,7 @@ class BNFParser extends LRParser {
 	/**
 	 * Parse input from file
 	 * @param string file path
-	 * @return ParseNode
+	 * @return \PLUG\parsing\ParseNode
 	 */
 	static function parse_file( $f ){
 		$src = file_get_contents( $f, true );

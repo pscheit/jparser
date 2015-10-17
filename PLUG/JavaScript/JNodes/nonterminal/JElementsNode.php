@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript\JNodes\nonterminal;
+
 /**
  * File containing class JElementsNode
  * @author Tim Whitlock
@@ -7,8 +10,10 @@
  * @subpackage JNodes
  * @version $Id: JElementsNode.php,v 1.1 2009/03/22 12:51:08 twhitlock Exp $
  */
- 
- 
+
+use PLUG\JavaScript\JNodes\JNodeBase;
+use PLUG\JavaScript\JNodes\terminal\JIdentifierNode;
+
 /**
  * JavaScript node class for the J_ELEMENTS symbol
  * @category PLUG

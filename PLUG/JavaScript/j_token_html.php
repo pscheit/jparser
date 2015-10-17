@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing function j_token_html
  * @author Tim Whitlock
@@ -7,9 +10,10 @@
  * @version $Id: j_token_html.php,v 1.1 2009/03/22 12:51:43 twhitlock Exp $
  */
 
-
+use PLUG\JavaScript\JLex;
+use PLUG\parsing\Lex;
 /** Require Tokenizer */
-import('PLUG.JavaScript.j_token_get_all');
+use function PLUG\JavaScript\j_token_get_all;
  
  
 /**
@@ -22,7 +26,7 @@ import('PLUG.JavaScript.j_token_get_all');
  * @param string optionally specify HTML tag instead of "OL", e.g. "DIV"
  * @return string
  */
-function j_token_html( $src , $ws = true, $unicode = true, $ol = 'ol', $LexClass = 'JLex' ){
+function j_token_html( $src , $ws = true, $unicode = true, $ol = 'ol', $LexClass = JLex::class ){
 	
 	// instantiate Lex instance of appropriate type
 	$Lex = Lex::get( $LexClass );

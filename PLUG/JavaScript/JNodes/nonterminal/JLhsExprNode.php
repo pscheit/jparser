@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript\JNodes\nonterminal;
+
 /**
  * File containing class JLhsExprNode
  * @author Tim Whitlock
@@ -7,8 +10,9 @@
  * @subpackage JNodes
  * @version $Id: JLhsExprNode.php,v 1.1 2009/03/22 12:51:09 twhitlock Exp $
  */
- 
- 
+
+use PLUG\JavaScript\JNodes\JNodeBase;
+
 /**
  * JavaScript node class for the J_LHS_EXPR symbol
  * @category PLUG

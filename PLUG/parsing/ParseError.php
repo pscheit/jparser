@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing;
+
 /**
  * File containing class ParseError
  * @author Tim Whitlock
@@ -7,7 +10,7 @@
  * @version $Id: ParseError.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
-
+use Exception;
 
 /**
  * ParseError Exception class.

@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing class JTokenizerBase
  * @author Tim Whitlock
@@ -7,8 +10,7 @@
  * @version $Id: JTokenizerBase.php,v 1.1.2.1 2009/11/14 16:27:56 twhitlock Exp $
  */
 
-
-
+use Exception;
 
 /**
  * @category PLUG

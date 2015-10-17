@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing class JParserBase
  * @author Tim Whitlock
@@ -8,8 +11,9 @@
  */
 
  
-import('PLUG.parsing.LR.LRParser'); 
-//import('PLUG.JavaScript.j_token_get_all'); 
+use PLUG\parsing\LR\LRParseNode;
+use PLUG\parsing\LR\LRParser;
+//use PLUG\JavaScript\j_token_get_all; 
 
  
 /**
@@ -38,7 +42,7 @@ abstract class JParserBase extends LRParser {
 	 * Parse a JavaScript string according to specific parser class
 	 * @param string source string
 	 * @param string parser subclass to use
-	 * @return LRParseNode
+	 * @return \PLUG\parsing\LR\LRParseNode
 	 */
 	static function parse_string( $src, $unicode = true, $parser = __CLASS__, $lexer = 'JTokenizer' ){
 		$Tokenizer = new $lexer( false, $unicode);

@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing;
+
 /**
  * File containing class Parser
  * @author Tim Whitlock
@@ -7,8 +10,9 @@
  * @version $Id: Parser.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
-
-import('PLUG.parsing.ParseError');
+use Exception;
+use PLUG\parsing\ParseError;
+use PLUG\parsing\ParseNode;
 
  
 /**
@@ -40,7 +44,7 @@ abstract class Parser {
 	/**
 	 * @var string
 	 */
-	protected $default_node_class = 'ParseNode';
+	protected $default_node_class = ParseNode::class;
 	
 	/**
 	 * input token stream

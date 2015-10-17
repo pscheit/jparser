@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\core;
+
 /**
  * File containing PLUGCli Class
  * @version $Id: PLUGCli.php,v 1.1 2009/03/22 12:42:21 twhitlock Exp $

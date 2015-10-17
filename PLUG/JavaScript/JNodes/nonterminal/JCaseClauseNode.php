@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript\JNodes\nonterminal;
+
 /**
  * File containing class JCaseClauseNode
  * @author Tim Whitlock
@@ -9,7 +12,7 @@
  */
  
 
-import('PLUG.JavaScript.JNodes.nonterminal.JCaseDefaultNode');
+use PLUG\JavaScript\JNodes\nonterminal\JCaseDefaultNode;
  
 
 /**

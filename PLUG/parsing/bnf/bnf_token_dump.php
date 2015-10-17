@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\bnf;
+
 /**
  * File containing function bnf_token_dump
  * @author Tim Whitlock
@@ -12,7 +15,7 @@
 /**
  * Require BNF Lexicon
  */
-import('PLUG.parsing.bnf.BNFLex');
+use PLUG\parsing\bnf\BNFLex;
  
 
 

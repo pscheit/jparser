@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\LR;
+
 /**
  * File containing class LRItem
  * @author Tim Whitlock
@@ -8,6 +11,8 @@
  * @version $Id: LRStation.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
+use PLUG\parsing\Grammar;
+use PLUG\parsing\Lex;
 
 /**
  * Station object for use while generating an LR Automaton

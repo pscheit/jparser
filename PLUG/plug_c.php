@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG;
+
 /**
  * Compile-time include.
  * Includes essential PLUG components for compiled source.
@@ -15,12 +18,12 @@ define( 'PLUG_COMPILED', true );
 /**
  * Include target configuration in `conf' directory outside document root
  */
-import( 'conf.PLUG' ); 
+use 'conf\PLUG'; 
 
 /**
  * Import top-level PLUG class
  */ 
-import('PLUG.core.PLUG'); 
+use PLUG\core\PLUG; 
 
 /**
  * Initialize PLUG environment

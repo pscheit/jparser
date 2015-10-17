@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\bnf;
+
 /**
  * File containing class BNFExpressionNode
  * @author Tim Whitlock
@@ -8,8 +11,8 @@
  * @version $Id: BNFExpressionNode.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
- 
- 
+use PLUG\parsing\LR\LRParseNode;
+
 /**
  * 
  * @category PLUG

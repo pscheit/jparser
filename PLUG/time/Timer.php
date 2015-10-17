@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\time;
+
 /**
  * File containing PLUG.time.Timer class
  * @category PLUG

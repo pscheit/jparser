@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\bnf;
+
 /**
  * File containing class BNFRulesNode
  * @author Tim Whitlock
@@ -8,7 +11,9 @@
  * @version $Id: BNFRulesNode.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
- 
+use PLUG\parsing\LexBuilder;
+use PLUG\parsing\LR\LRParseNode;
+
 /**
  * Root node for grammar rules in BNF format
  * @category PLUG

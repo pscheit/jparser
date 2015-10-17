@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\functions\filesystem;
+
 /**
  * File containing function findpath
  * @author Tim Whitlock
@@ -9,7 +12,7 @@
  */
 
 /** require path cleaning function */
-import('PLUG.functions.filesystem.cleanpath');
+use function PLUG\functions\filesystem\cleanpath;
 
 
 /**

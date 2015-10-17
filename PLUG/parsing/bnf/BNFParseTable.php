@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\bnf;
+
 /**
  * Auto-generated file containing class BNFParseTable
  * @author Tim Whitlock
@@ -8,7 +11,7 @@
  * @version $Id: BNFParseTable.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
-import('PLUG.parsing.LR.LRParseTable');
+use PLUG\parsing\LR\LRParseTable;
 
 /**
  * Auto-generated LRParseTable subclass

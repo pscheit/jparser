@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\LR;
+
 /**
  * File containing class PLUG.parsing.LR.LRItem
  * @author Tim Whitlock
@@ -8,6 +11,8 @@
  * @version $Id: LRState.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
+use PLUG\parsing\Grammar;
+use PLUG\parsing\Lex;
 
 /**
  * State object for use while generating an LR automaton.
@@ -105,17 +110,17 @@ class LRState {
 				$las = array( null );
 			}
 			// else there are three situations for moving to a new station:
-			// a. This is the last symbol so we carry through existing lookahead, e.g. "..•X [a]"
+			// a. This is the last symbol so we carry through existing lookahead, e.g. "..â€¢X [a]"
 			else if( is_null($la) ){
 				// use current look ahead
 				$las = array( $this->Item->lookahead() );
 			}
-			// b. Look ahead is terminal following current non terminal e.g. "..•Xa.."
+			// b. Look ahead is terminal following current non terminal e.g. "..â€¢Xa.."
 			else if( $Grammar->is_terminal($la) ){
 				// use terminal as next lookahead
 				$las = array( $la );
 			}
-			// c. Non-terminal follows this non-terminal, e.g. "..•XYZ..."
+			// c. Non-terminal follows this non-terminal, e.g. "..â€¢XYZ..."
 			//    Page 207 & 211 of Parsing Guide says calculate FIRST(YZ..) 
 			//    But FOLLOW(X) can result in more lookaheads as it consults other rules no in this item.
 			else {

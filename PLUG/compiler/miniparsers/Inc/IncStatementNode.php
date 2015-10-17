@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\compiler\miniparsers\Inc;
+
 /**
  * File containing class IncStatementNode
  * @author Tim Whitlock
@@ -8,7 +11,7 @@
  * @version $Id: IncStatementNode.php,v 1.1 2009/03/22 12:58:58 twhitlock Exp $
  */
 
-import('PLUG.parsing.LR.LRParseNode');
+use PLUG\parsing\LR\LRParseNode;
  
  
 /**

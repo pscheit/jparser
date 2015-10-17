@@ -9,6 +9,7 @@
         }
     ],
     "autoload": {
+        "psr-4": {"PLUG\\": "PLUG/"},
         "files": [
           "conf.dist/PLUG.conf.php",
           "PLUG/core/PLUGTool.php"
@@ -16,6 +17,6 @@
     },
     "minimum-stability": "dev",
     "require": {
-
+        "php": ">=5.6"
     }
 }

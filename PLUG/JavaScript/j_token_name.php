@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing function j_token_name
  * @author Tim Whitlock
@@ -11,8 +14,8 @@
 /**
  * Require JavaScript Lexicon
  */
-import('PLUG.JavaScript.JLex');
-
+use PLUG\JavaScript\JLex;
+use PLUG\parsing\Lex;
 
 /**
  * Get name of Javascript terminal symbol
@@ -20,6 +23,6 @@ import('PLUG.JavaScript.JLex');
  * @return string
  */	
 function j_token_name( $t ){
-	$Lex = Lex::get('JLex');
+	$Lex = Lex::get(JLex::class);
 	return $Lex->name( $t );
 }

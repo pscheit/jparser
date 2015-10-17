@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\LR;
+
 /**
  * File containing class PLUG.parsing.LR.LRItem
  * @author Tim Whitlock
@@ -8,6 +11,8 @@
  * @version $Id: LRItem.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
+use PLUG\parsing\Grammar;
+use PLUG\parsing\Lex;
 
 /**
  * Item for use while generating an LR Automaton.
@@ -83,7 +88,7 @@ class LRItem {
 		echo $Lex->name($lhs), "->";
 		foreach( $rhs as $i => $s ){
 			if( $i === $this->i ){
-				echo '•';
+				echo 'â€¢';
 			}
 			else if( $i !== 0 ){
 				echo ',';
@@ -93,7 +98,7 @@ class LRItem {
 		}
 		if( is_null( $this->current_symbol() ) ){
 			// accepting state
-			echo '•';
+			echo 'â€¢';
 		}
 		if( isset($this->la) ){
 			echo ' [',$Lex->name($this->la),']';

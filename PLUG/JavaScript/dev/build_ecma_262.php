@@ -1,14 +1,17 @@
 #!/usr/bin/php
 <?php
+
+namespace PLUG\JavaScript\dev;
+
 /**
  * Build JParser
  */
 require dirname($argv[0]).'/../../plugcli.php';
 
-import('PLUG.time.Timer');
-import('PLUG.parsing.*');
-import('PLUG.parsing.LR.*');
-import('PLUG.parsing.bnf.*');
+use PLUG\parsing\bnf\BNFParser;
+use PLUG\parsing\GrammarBuilder;
+use PLUG\parsing\LR\LRNDA;
+use PLUG\time\Timer;
 
 
 $lexname = 'JLexBase';

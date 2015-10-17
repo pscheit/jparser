@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing class JLex
  * @category PLUG
@@ -9,7 +12,8 @@
 /**
  * Require auto-generated super class containing symbol definitions
  */
-import('PLUG.JavaScript.JLexBase');
+use PLUG\JavaScript\JLexBase;
+use PLUG\parsing\Lex;
 
 
 /**

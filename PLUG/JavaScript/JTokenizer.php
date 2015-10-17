@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing class JTokenizer
  * @author Tim Whitlock
@@ -8,10 +11,9 @@
  */
 
 
-import('PLUG.JavaScript.JLex');
-import('PLUG.JavaScript.JTokenizerBase');
-
-
+use PLUG\JavaScript\JLex;
+use PLUG\JavaScript\JTokenizerBase;
+use PLUG\parsing\Lex;
 
 
 /**
@@ -31,7 +33,7 @@ class JTokenizer extends JTokenizerBase {
 	 */	
 	function __construct( $whitespace, $unicode ){
 		parent::__construct( $whitespace, $unicode );
-		$this->Lex = Lex::get('JLex');
+		$this->Lex = Lex::get(JLex::class);
 	}		
 		
 	
