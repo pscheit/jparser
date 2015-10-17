@@ -10,7 +10,7 @@ namespace PLUG\JavaScript;
  * @version $Id: j_token_html.php,v 1.1 2009/03/22 12:51:43 twhitlock Exp $
  */
 
-
+use PLUG\parsing\Lex;
 /** Require Tokenizer */
 use function PLUG\JavaScript\j_token_get_all;
  

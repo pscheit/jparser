@@ -11,7 +11,8 @@ namespace PLUG\JavaScript;
  */
 
  
-use PLUG\parsing\LR\LRParser; 
+use PLUG\parsing\LR\LRParseNode;
+use PLUG\parsing\LR\LRParser;
 //use PLUG\JavaScript\j_token_get_all; 
 
  

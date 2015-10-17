@@ -10,8 +10,9 @@ namespace PLUG\JavaScript\JNodes\nonterminal;
  * @subpackage JNodes
  * @version $Id: JArrayLiteralNode.php,v 1.1 2009/03/22 12:51:08 twhitlock Exp $
  */
- 
- 
+
+use PLUG\JavaScript\JNodes\JNodeBase;
+
 /**
  * JavaScript node class for the J_ARRAY_LITERAL symbol
  * @category PLUG

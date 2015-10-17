@@ -10,8 +10,8 @@ namespace PLUG\parsing\LR;
  * @subpackage LR
  * @version $Id: LRNDA.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
- 
- 
+
+use PLUG\parsing\Grammar;
 use PLUG\parsing\LR\LRStation;
 use PLUG\parsing\LR\LRStateSet;
 use PLUG\parsing\LR\LRItem;

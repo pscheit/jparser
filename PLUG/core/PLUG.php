@@ -9,7 +9,8 @@ namespace PLUG\core;
  * @version $Id: PLUG.php,v 1.2 2009/08/09 23:39:42 twhitlock Exp $
  */
 
- 
+use Exception;
+
 /**
  * Import PLUGException class
  */

@@ -10,6 +10,8 @@ namespace PLUG\parsing;
  * @version $Id: Grammar.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
+use Exception;
+use PLUG\parsing\LR\LRStateSet;
 
 /**
  * Grammar base class

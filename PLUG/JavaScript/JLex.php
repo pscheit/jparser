@@ -13,6 +13,7 @@ namespace PLUG\JavaScript;
  * Require auto-generated super class containing symbol definitions
  */
 use PLUG\JavaScript\JLexBase;
+use PLUG\parsing\Lex;
 
 
 /**

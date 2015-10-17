@@ -13,8 +13,7 @@ namespace PLUG\JavaScript;
 
 use PLUG\JavaScript\JLex;
 use PLUG\JavaScript\JTokenizerBase;
-
-
+use PLUG\parsing\Lex;
 
 
 /**

@@ -12,6 +12,7 @@ namespace PLUG\JavaScript\JNodes;
  */
 
 use PLUG\parsing\LR\LRParseNode;
+use PLUG\parsing\ParseNode;
 
 /**
  * Default JavaScript node class

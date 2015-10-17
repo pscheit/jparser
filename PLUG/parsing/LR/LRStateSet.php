@@ -10,8 +10,9 @@ namespace PLUG\parsing\LR;
  * @subpackage LR
  * @version $Id: LRStateSet.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
- 
- 
+
+use Exception;
+use PLUG\parsing\Grammar;
 
 /**
  * 

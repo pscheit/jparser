@@ -8,6 +8,7 @@ namespace PLUG\core;
  * @package core
  */
 
+use Exception;
 
 /**
  * Standard exception error code

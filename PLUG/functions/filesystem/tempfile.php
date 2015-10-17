@@ -11,7 +11,7 @@ namespace PLUG\functions\filesystem;
  * @version $Id: tempfile.php,v 1.1 2009/03/22 12:44:44 twhitlock Exp $
  */
 
-
+use Exception;
 
 /**
  * Improvement to php tmpfile function because it provides us with file path via tempnam

@@ -10,8 +10,7 @@ namespace PLUG\JavaScript;
  * @version $Id: j_token_dump.php,v 1.1 2009/03/22 12:51:43 twhitlock Exp $
  */
 
-
-
+use PLUG\parsing\Lex;
 
 /**
  * Debugging function to print javascript token stream

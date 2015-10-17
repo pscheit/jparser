@@ -15,6 +15,9 @@ namespace PLUG\compiler;
  * Require miniparser for processing complex include statements
  */ 
 use PLUG\compiler\miniparsers\Inc\IncParser;
+use PLUG\core\PLUG;
+use PLUG\core\PLUGException;
+use PLUG\core\PLUGTool;
 
 /**
  * Require path mapping tools

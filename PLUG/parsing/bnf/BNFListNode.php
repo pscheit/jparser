@@ -11,8 +11,8 @@ namespace PLUG\parsing\bnf;
  * @version $Id: BNFListNode.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
- 
- 
+use PLUG\parsing\LR\LRParseNode;
+
 /**
  * 
  * @category PLUG

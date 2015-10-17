@@ -11,7 +11,7 @@ namespace PLUG\session;
  * @version $Id: PLUGSession.php,v 1.1 2009/03/22 12:57:32 twhitlock Exp $
  */
 
- 
+use __PHP_Incomplete_Class;
 
 /**
  * Require session object base class

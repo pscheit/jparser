@@ -11,6 +11,8 @@ namespace PLUG\parsing\LR;
  * @version $Id: LRState.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
+use PLUG\parsing\Grammar;
+use PLUG\parsing\Lex;
 
 /**
  * State object for use while generating an LR automaton.

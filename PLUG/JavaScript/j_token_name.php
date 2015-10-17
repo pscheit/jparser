@@ -15,7 +15,7 @@ namespace PLUG\JavaScript;
  * Require JavaScript Lexicon
  */
 use PLUG\JavaScript\JLex;
-
+use PLUG\parsing\Lex;
 
 /**
  * Get name of Javascript terminal symbol

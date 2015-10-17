@@ -8,7 +8,8 @@ namespace PLUG\parsing\bnf;
  * @package parsing
  * @subpackage bnf 
  */	
- 
+
+use Exception;
 use PLUG\parsing\LR\LRParser; 
 
 // include tokenizer
