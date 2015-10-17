@@ -83,7 +83,7 @@ class LRItem {
 		echo $Lex->name($lhs), "->";
 		foreach( $rhs as $i => $s ){
 			if( $i === $this->i ){
-				echo '•';
+				echo 'â€¢';
 			}
 			else if( $i !== 0 ){
 				echo ',';
@@ -93,7 +93,7 @@ class LRItem {
 		}
 		if( is_null( $this->current_symbol() ) ){
 			// accepting state
-			echo '•';
+			echo 'â€¢';
 		}
 		if( isset($this->la) ){
 			echo ' [',$Lex->name($this->la),']';
