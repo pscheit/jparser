@@ -12,7 +12,7 @@ namespace PLUG\parsing\bnf;
 use PLUG\parsing\LR\LRParser; 
 
 // include tokenizer
-use PLUG\parsing\bnf\bnf_tokenize;
+use function PLUG\parsing\bnf\bnf_tokenize;
 use PLUG\parsing\bnf\BNFLex;
 use PLUG\parsing\bnf\BNFGrammar;
 use PLUG\parsing\bnf\BNFParseTable;

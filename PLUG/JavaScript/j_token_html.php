@@ -12,7 +12,7 @@ namespace PLUG\JavaScript;
 
 
 /** Require Tokenizer */
-use PLUG\JavaScript\j_token_get_all;
+use function PLUG\JavaScript\j_token_get_all;
  
  
 /**

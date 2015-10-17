@@ -14,22 +14,19 @@ namespace PLUG\compiler;
 /**
  * Require miniparser for processing complex include statements
  */ 
-use PLUG\compiler\miniparsers\Inc\IncParser; 
+use PLUG\compiler\miniparsers\Inc\IncParser;
 
 /**
  * Require path mapping tools
  */
-use PLUG\functions\filesystem\cleanpath; 
-use PLUG\functions\filesystem\findpath; 
-use PLUG\functions\filesystem\relpath; 
+use function PLUG\functions\filesystem\cleanpath;
+use function PLUG\functions\filesystem\findpath;
+use function PLUG\functions\filesystem\relpath;
 
 /**
  * Require other utils
  */
-use PLUG\functions\filesystem\tempfile; 
-
-
-
+use function PLUG\functions\filesystem\tempfile;
  
 /**
  * Option to keep comments in compiled source, default is off

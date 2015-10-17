@@ -13,7 +13,7 @@ namespace PLUG\functions\filesystem;
 
 
 /** require path cleaning function */
-use PLUG\functions\filesystem\cleanpath;
+use function PLUG\functions\filesystem\cleanpath;
  
  
 /**

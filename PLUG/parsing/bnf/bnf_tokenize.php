@@ -11,7 +11,7 @@ namespace PLUG\parsing\bnf;
 
  
 use PLUG\parsing\bnf\BNFLex;
-use PLUG\parsing\utils\collect_encapsed_string;
+use function PLUG\parsing\utils\collect_encapsed_string;
 
 /**
  * Tokenize a bnf string

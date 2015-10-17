@@ -9,7 +9,7 @@ namespace PLUG\functions\filesystem;
  */
  
 
-use PLUG\functions\string\memory_format;
+use function PLUG\functions\string\memory_format;
  
 
 /**

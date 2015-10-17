@@ -12,7 +12,7 @@ namespace PLUG\compiler\miniparsers\Inc;
  */
 
 use PLUG\parsing\LR\LRParseNode;
-use PLUG\parsing\utils\decapse_string;
+use function PLUG\parsing\utils\decapse_string;
 
  
 /**
