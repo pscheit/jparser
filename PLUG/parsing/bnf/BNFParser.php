@@ -57,7 +57,7 @@ class BNFParser extends LRParser {
 	/**
 	 * parse input string
 	 * @param string input source
-	 * @return ParseNode
+	 * @return \PLUG\parsing\ParseNode
 	 */
 	static function parse_string( $s ){
 		if( $s == '' ){
@@ -75,7 +75,7 @@ class BNFParser extends LRParser {
 	/**
 	 * Parse input from file
 	 * @param string file path
-	 * @return ParseNode
+	 * @return \PLUG\parsing\ParseNode
 	 */
 	static function parse_file( $f ){
 		$src = file_get_contents( $f, true );

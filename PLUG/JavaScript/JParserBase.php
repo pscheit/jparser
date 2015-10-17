@@ -42,7 +42,7 @@ abstract class JParserBase extends LRParser {
 	 * Parse a JavaScript string according to specific parser class
 	 * @param string source string
 	 * @param string parser subclass to use
-	 * @return LRParseNode
+	 * @return \PLUG\parsing\LR\LRParseNode
 	 */
 	static function parse_string( $src, $unicode = true, $parser = __CLASS__, $lexer = 'JTokenizer' ){
 		$Tokenizer = new $lexer( false, $unicode);
