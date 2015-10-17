@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\utils;
+
 /**
  * File containing function collect_encapsed_string
  * @author Tim Whitlock

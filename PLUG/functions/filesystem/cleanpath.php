@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\functions\filesystem;
+
 /**
  * File containing function cleanpath
  * @author Tim Whitlock

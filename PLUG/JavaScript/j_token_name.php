@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing function j_token_name
  * @author Tim Whitlock
@@ -11,7 +14,7 @@
 /**
  * Require JavaScript Lexicon
  */
-import('PLUG.JavaScript.JLex');
+use PLUG\JavaScript\JLex;
 
 
 /**

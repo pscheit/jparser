@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript\JNodes\nonterminal;
+
 /**
  * File containing class JArrayLiteralNode
  * @author Tim Whitlock

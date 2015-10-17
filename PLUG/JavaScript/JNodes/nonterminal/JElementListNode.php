@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript\JNodes\nonterminal;
+
 /**
  * File containing class JElementListNode
  * @author Tim Whitlock

@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript\JNodes\nonterminal;
+
 /**
  * File containing class JBlockNode
  * @author Tim Whitlock

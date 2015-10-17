@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing function j_token_html
  * @author Tim Whitlock
@@ -9,7 +12,7 @@
 
 
 /** Require Tokenizer */
-import('PLUG.JavaScript.j_token_get_all');
+use PLUG\JavaScript\j_token_get_all;
  
  
 /**

@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript\JNodes\nonterminal;
+
 /**
  * File containing class JLhsExprNode
  * @author Tim Whitlock

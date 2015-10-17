@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\functions\PHP;
+
 /**
  * File containing function php_highlight_string
  * @author Tim Whitlock

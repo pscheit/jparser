@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\functions\PHP;
+
 /**
  * File containing function php_check_syntax
  * @author Tim Whitlock

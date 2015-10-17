@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing class JParserBase
  * @author Tim Whitlock
@@ -8,8 +11,8 @@
  */
 
  
-import('PLUG.parsing.LR.LRParser'); 
-//import('PLUG.JavaScript.j_token_get_all'); 
+use PLUG\parsing\LR\LRParser; 
+//use PLUG\JavaScript\j_token_get_all; 
 
  
 /**

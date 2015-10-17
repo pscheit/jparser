@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\bnf;
+
 /**
  * File containing class BNFExpressionNode
  * @author Tim Whitlock

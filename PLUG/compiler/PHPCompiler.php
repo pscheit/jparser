@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\compiler;
+
 /**
  * File containing class PHPCompiler
  * @author Tim Whitlock
@@ -11,19 +14,19 @@
 /**
  * Require miniparser for processing complex include statements
  */ 
-import('PLUG.compiler.miniparsers.Inc.IncParser'); 
+use PLUG\compiler\miniparsers\Inc\IncParser; 
 
 /**
  * Require path mapping tools
  */
-import('PLUG.functions.filesystem.cleanpath'); 
-import('PLUG.functions.filesystem.findpath'); 
-import('PLUG.functions.filesystem.relpath'); 
+use PLUG\functions\filesystem\cleanpath; 
+use PLUG\functions\filesystem\findpath; 
+use PLUG\functions\filesystem\relpath; 
 
 /**
  * Require other utils
  */
-import('PLUG.functions.filesystem.tempfile'); 
+use PLUG\functions\filesystem\tempfile; 
 
 
 

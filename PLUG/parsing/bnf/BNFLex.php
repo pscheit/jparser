@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\bnf;
+
 /**
  * Auto-generated file containing class BNFLex
  * @author Tim Whitlock
@@ -8,7 +11,7 @@
  * @version $Id: BNFLex.php,v 1.1 2009/03/22 12:55:30 twhitlock Exp $
  */
 
-import('PLUG.parsing.Lex');
+use PLUG\parsing\Lex;
 
 define( 'BNF_RULES', 1 );
 define( 'BNF_RULE', 2 );

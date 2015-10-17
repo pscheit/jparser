@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\core;
+
 /**
  * File containing top-level PLUG class
  * @category PLUG
@@ -10,12 +13,12 @@
 /**
  * Import PLUGException class
  */
-import('PLUG.core.PLUGException');
+use PLUG\core\PLUGException;
 
 /**
  * Import PLUGError class
  */
-import('PLUG.core.PLUGError'); 
+use PLUG\core\PLUGError; 
 
 
 /**
@@ -122,8 +125,8 @@ final class PLUG {
 	 * @return Void
 	 */
 	static function set_error_handlers() {
-		set_error_handler( array( 'PLUG', 'on_trigger_error' ) );
-		set_exception_handler( array('PLUG', 'on_uncaught_exception' ) );
+		set_error_handler( array(self::class, 'on_trigger_error' ) );
+		set_exception_handler( array(self::class, 'on_uncaught_exception' ) );
 	}
 	
 	

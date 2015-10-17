@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing function j_token_dump
  * @author Tim Whitlock

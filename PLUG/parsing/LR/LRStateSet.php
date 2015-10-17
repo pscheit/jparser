@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\LR;
+
 /**
  * File containing class LRStateSet
  * @author Tim Whitlock

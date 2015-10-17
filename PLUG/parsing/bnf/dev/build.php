@@ -1,9 +1,12 @@
 #!/usr/bin/php
 <?php
+
+namespace PLUG\parsing\bnf\dev;
+
 require dirname(__FILE__).'/../../../plugcli.php';
-import('PLUG.parsing.LexBuilder');
-import('PLUG.parsing.GrammarBuilder');
-import('PLUG.parsing.LR.*');
+use PLUG\parsing\LexBuilder;
+use PLUG\parsing\GrammarBuilder;
+use PLUG\parsing\LR\LRNDA;
 
 
 // Manually construct the BNF Lexicon

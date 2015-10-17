@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing class JParser
  * @author Tim Whitlock
@@ -8,14 +11,12 @@
  */
 
  
-import('PLUG.JavaScript.JParserBase'); 
-//import('PLUG.JavaScript.JTokenizer'); // <- dependencies removed for distribution purposes
-//import('PLUG.JavaScript.JLex'); 
-import('PLUG.JavaScript.JGrammar'); 
-import('PLUG.JavaScript.JParseTable'); 
-import('PLUG.JavaScript.JNodes.JNodeBase'); 
-import('PLUG.JavaScript.JNodes.nonterminal.*'); 
-import('PLUG.JavaScript.JNodes.terminal.*'); 
+use PLUG\JavaScript\JParserBase; 
+//use PLUG\JavaScript\JTokenizer; // <- dependencies removed for distribution purposes
+//use PLUG\JavaScript\JLex; 
+use PLUG\JavaScript\JGrammar; 
+use PLUG\JavaScript\JParseTable; 
+use PLUG\JavaScript\JNodes\JNodeBase;
 
  
 /**

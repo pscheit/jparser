@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * File containing class JParserRaw
  * @author Tim Whitlock
@@ -8,11 +11,11 @@
  */
 
  
-import('PLUG.JavaScript.JParserBase'); 
-import('PLUG.JavaScript.JTokenizer'); 
-import('PLUG.JavaScript.JLex'); 
-import('PLUG.JavaScript.JGrammar'); 
-import('PLUG.JavaScript.JParseTable'); 
+use PLUG\JavaScript\JParserBase; 
+use PLUG\JavaScript\JTokenizer; 
+use PLUG\JavaScript\JLex; 
+use PLUG\JavaScript\JGrammar; 
+use PLUG\JavaScript\JParseTable; 
 
  
 /**

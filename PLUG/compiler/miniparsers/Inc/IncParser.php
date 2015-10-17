@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\compiler\miniparsers\Inc;
+
 /**
  * File containing class IncParser
  * @category PLUG
@@ -6,12 +9,12 @@
  * @subpackage miniparsers 
  */	
  
-import('PLUG.PHP.PHPParserBase'); 
-import('PLUG.compiler.miniparsers.Inc.IncLex');
-import('PLUG.compiler.miniparsers.Inc.IncGrammar');
-import('PLUG.compiler.miniparsers.Inc.IncParseTable');
-import('PLUG.compiler.miniparsers.Inc.IncStatementNode');
-import('PLUG.compiler.miniparsers.Inc.IncArgumentNode');
+use PLUG\PHP\PHPParserBase; 
+use PLUG\compiler\miniparsers\Inc\IncLex;
+use PLUG\compiler\miniparsers\Inc\IncGrammar;
+use PLUG\compiler\miniparsers\Inc\IncParseTable;
+use PLUG\compiler\miniparsers\Inc\IncStatementNode;
+use PLUG\compiler\miniparsers\Inc\IncArgumentNode;
 
 
 /**

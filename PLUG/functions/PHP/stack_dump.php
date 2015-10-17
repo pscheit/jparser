@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\functions\PHP;
+
 /**
  * Provides neater view of debug_backtrace();
  * @package functions

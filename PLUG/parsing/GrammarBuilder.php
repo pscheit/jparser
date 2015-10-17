@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing;
+
 /**
  * File containing class GrammarBuilder
  * @author Tim Whitlock
@@ -8,7 +11,7 @@
  */
 
 
-import('PLUG.parsing.Grammar');
+use PLUG\parsing\Grammar;
 
 
 /**
@@ -378,7 +381,7 @@ class GrammarBuilder extends Grammar {
 		echo 
 		"\n */\n",
 		"\n",
-		"import('PLUG.parsing.Grammar');\n",
+		"use PLUG\parsing\Grammar;\n",
 		"\n",
 		"/**\n * Auto-generated Grammar subclass";
 		// unset page level doc block tags we don't want against the class

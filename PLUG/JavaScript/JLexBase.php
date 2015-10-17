@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\JavaScript;
+
 /**
  * Auto-generated file containing class JLexBase
  * @author Tim Whitlock
@@ -7,7 +10,7 @@
  * @version $Id: JLexBase.php,v 1.1 2009/03/22 12:51:43 twhitlock Exp $
  */
 
-import('PLUG.parsing.Lex');
+use PLUG\parsing\Lex;
 
 define( 'J_FUNCTION', 1 );
 define( 'J_IDENTIFIER', 2 );

@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing\LR;
+
 /**
  * File containing class LRItem
  * @author Tim Whitlock

@@ -1,4 +1,7 @@
 <?php
+
+namespace PLUG\parsing;
+
 /**
  * File containing class Grammar
  * @author Tim Whitlock
