@@ -1,7 +1,7 @@
 {
     "name": "timwhitlock/jparser",
     "description": "A JavaScript parsing library for PHP",
-    "licencse": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Tim Whitlock",
